@@ -1,0 +1,13 @@
+".\output\main.obj",
+".\output\dali_drv.obj",
+".\output\key_scan.obj",
+".\output\lcd_drv.obj",
+".\output\system.obj",
+".\output\nvram.obj",
+".\output\i2c.obj",
+".\output\F410_FlashUtils.obj",
+".\output\F410_FlashPrimitives.obj",
+".\output\spicom_in.obj",
+".\output\spicom.obj" 
+TO ".\output\jiujing_send" 
+PRINT(".\jiujing_send.m51") RAMSIZE(256) 

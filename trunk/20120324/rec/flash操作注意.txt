@@ -1,0 +1,31 @@
+
+//每次操作的最大字节数 
+#ifndef FLASH_PAGESIZE
+#define FLASH_PAGESIZE 512
+#endif
+因此程序中的写程序字节不能大于512 ，最好
+
+
+//flash的临时中转区域  开始地址 7A00-7BFF
+
+#ifndef FLASH_TEMP
+#define FLASH_TEMP 0x7a00L             // For 32K Flash devices
+//#define FLASH_TEMP 0x3C00L           // For 16K Flash devices
+#endif
+
+//flash  包含 FLASH 安全锁定字节的页:7C00- 7DFF  锁定字节:(7dff)    保留字节区:7e00-7fff
+#ifndef FLASH_LAST
+#define FLASH_LAST 0x7c00L             // For 32K Flash devices
+//#define FLASH_LAST 0x3E00L           // For 16K Flash devices
+#endif
+
+
+锁定示例:
+下面是针对 C8051F410 的锁定字节示例。 
+安全锁定字节：   11111101 b 
+反码：     00000010 b                                                
+被锁定的FLASH页： 3（前两个FLASH页 + 锁定字节页） 
+被锁定的地址：  0x0000 ~ 0x03FF（前两个FLASH页）和0x7C00 ~ 0x7DFF 
+或0x0E00 ~ 0x0FFF或0x0600 ~ 0x07FF（锁定字节页）
+过大
+

@@ -1,0 +1,513 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?fileVersion 4.0.0?>
+
+<cproject storage_type_id="org.eclipse.cdt.core.XmlProjectDescriptionStorage">
+	<storageModule moduleId="org.eclipse.cdt.core.settings">
+		<cconfiguration
+			id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851">
+			<storageModule
+				buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider"
+				id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851"
+				moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings />
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser" />
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.MakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GCCErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GASErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GLDErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}"
+					buildArtefactType="org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					description=""
+					id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851"
+					name="Debug" parent="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug">
+					<folderInfo
+						id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851."
+						name="/" resourcePath="">
+						<toolChain
+							id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.debug.2357412"
+							name="ARM Windows GCC (Sourcery G++ Lite)"
+							superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.debug">
+							<option
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level.1714975096"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level"
+								value="org.eclipse.cdt.cross.arm.gnu.base.option.debugging.level.max"
+								valueType="enumerated" />
+							<targetPlatform
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.debug.1880734810"
+								isAbstract="false" name="Windows Platform"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.debug" />
+							<builder buildPath="${workspace_loc:/JIU2}/Debug"
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.debug.1547090545"
+								managedBuildOn="true" name="ARM Sourcery Windows GNU Make builder.Debug"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.debug.1459231009"
+								name="ARM Sourcery Windows GCC Assembler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.debug">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.511095492"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.debug.1528791168"
+								name="ARM Sourcery Windows GCC C Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.debug">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.552707467"
+									superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none"
+									valueType="enumerated" />
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.324417530"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.debug.1550938197"
+								name="ARM Sourcery Windows GCC C++ Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.debug">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level.1672990637"
+									superClass="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none"
+									valueType="enumerated" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.debug.590018346"
+								name="ARM Sourcery Windows GCC C Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.debug">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.c.linker.input.1405544884"
+									superClass="org.eclipse.cdt.cross.arm.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency"
+										paths="$(USER_OBJS)" />
+									<additionalInput kind="additionalinput" paths="$(LIBS)" />
+								</inputType>
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.debug.1164597059"
+								name="ARM Sourcery Windows GCC C++ Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base.355219713"
+								name="ARM Sourcery Windows GCC Archiver"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.debug.1617766381"
+								name="ARM Sourcery Windows GNU Create Flash Image"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.debug.2115625451"
+								name="ARM Sourcery Windows GNU Create Listing"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.debug.197495735"
+								name="ARM Sourcery Windows GNU Print Size"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.debug" />
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings" />
+		</cconfiguration>
+		<cconfiguration
+			id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698">
+			<storageModule
+				buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider"
+				id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698"
+				moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings />
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser" />
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.MakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GCCErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GASErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GLDErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}"
+					buildArtefactType="org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					description=""
+					id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698"
+					name="Release" parent="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release">
+					<folderInfo
+						id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698."
+						name="/" resourcePath="">
+						<toolChain
+							id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.release.1324865430"
+							name="ARM Windows GCC (Sourcery G++ Lite)"
+							superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.release">
+							<option
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level.74072135"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level"
+								value="org.eclipse.cdt.cross.arm.gnu.base.option.debugging.level.none"
+								valueType="enumerated" />
+							<targetPlatform
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.release.1774154071"
+								isAbstract="false" name="Windows Platform"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.release" />
+							<builder buildPath="${workspace_loc:/JIU2}/Release"
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.release.615655733"
+								managedBuildOn="true" name="ARM Sourcery Windows GNU Make builder.Release"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.release.1257324202"
+								name="ARM Sourcery Windows GCC Assembler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.release">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.1885304264"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.release.2041978952"
+								name="ARM Sourcery Windows GCC C Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.release">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.511941719"
+									superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size"
+									valueType="enumerated" />
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.1099114177"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.release.958132582"
+								name="ARM Sourcery Windows GCC C++ Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.release">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level.62662530"
+									superClass="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size"
+									valueType="enumerated" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.release.1135378066"
+								name="ARM Sourcery Windows GCC C Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.release">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.c.linker.input.308929566"
+									superClass="org.eclipse.cdt.cross.arm.gnu.c.linker.input">
+									<additionalInput kind="additionalinputdependency"
+										paths="$(USER_OBJS)" />
+									<additionalInput kind="additionalinput" paths="$(LIBS)" />
+								</inputType>
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.release.1692063517"
+								name="ARM Sourcery Windows GCC C++ Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base.257209365"
+								name="ARM Sourcery Windows GCC Archiver"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.release.114159692"
+								name="ARM Sourcery Windows GNU Create Flash Image"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.release.1696298695"
+								name="ARM Sourcery Windows GNU Create Listing"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.release.1204260551"
+								name="ARM Sourcery Windows GNU Print Size"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.release" />
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+			<storageModule moduleId="org.eclipse.cdt.core.externalSettings" />
+		</cconfiguration>
+		<cconfiguration
+			id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.151618518">
+			<storageModule
+				buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider"
+				id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.151618518"
+				moduleId="org.eclipse.cdt.core.settings" name="Debug">
+				<externalSettings />
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser" />
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.MakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GCCErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GASErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GLDErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}"
+					buildArtefactType="org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.debug,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					description=""
+					id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.151618518"
+					name="Debug" parent="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug">
+					<folderInfo
+						id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.151618518."
+						name="/" resourcePath="">
+						<toolChain
+							id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.debug.1717401999"
+							name="ARM Windows GCC (Sourcery G++ Lite)"
+							superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.debug">
+							<option
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level.1423734556"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level"
+								value="org.eclipse.cdt.cross.arm.gnu.base.option.debugging.level.max"
+								valueType="enumerated" />
+							<targetPlatform
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.debug.1258736172"
+								isAbstract="false" name="Windows Platform"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.debug" />
+							<builder buildPath="${workspace_loc:/jiu2}/Debug"
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.debug.1873535878"
+								managedBuildOn="true" name="ARM Sourcery Windows GNU Make builder.Debug"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.debug.1355013574"
+								name="ARM Sourcery Windows GCC Assembler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.debug">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.887926056"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.debug.685585694"
+								name="ARM Sourcery Windows GCC C Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.debug">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.921087788"
+									superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none"
+									valueType="enumerated" />
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.1496294080"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.debug.1518342222"
+								name="ARM Sourcery Windows GCC C++ Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.debug">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level.690036493"
+									superClass="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.none"
+									valueType="enumerated" />
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.cpp.compiler.base.input.691710391"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.cpp.compiler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.debug.1764489872"
+								name="ARM Sourcery Windows GCC C Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.debug.1967771202"
+								name="ARM Sourcery Windows GCC C++ Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.debug">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.cpp.linker.input.379978206"
+									superClass="org.eclipse.cdt.cross.arm.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency"
+										paths="$(USER_OBJS)" />
+									<additionalInput kind="additionalinput" paths="$(LIBS)" />
+								</inputType>
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base.13416416"
+								name="ARM Sourcery Windows GCC Archiver"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.debug.338336538"
+								name="ARM Sourcery Windows GNU Create Flash Image"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.debug.1115723611"
+								name="ARM Sourcery Windows GNU Create Listing"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.debug" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.debug.1862655468"
+								name="ARM Sourcery Windows GNU Print Size"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.debug" />
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+		</cconfiguration>
+		<cconfiguration
+			id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.94669354">
+			<storageModule
+				buildSystemId="org.eclipse.cdt.managedbuilder.core.configurationDataProvider"
+				id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.94669354"
+				moduleId="org.eclipse.cdt.core.settings" name="Release">
+				<externalSettings />
+				<extensions>
+					<extension id="org.eclipse.cdt.core.GNU_ELF" point="org.eclipse.cdt.core.BinaryParser" />
+					<extension id="org.eclipse.cdt.core.GmakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.CWDLocator" point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.MakeErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GCCErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GASErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+					<extension id="org.eclipse.cdt.core.GLDErrorParser"
+						point="org.eclipse.cdt.core.ErrorParser" />
+				</extensions>
+			</storageModule>
+			<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+				<configuration artifactName="${ProjName}"
+					buildArtefactType="org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					buildProperties="org.eclipse.cdt.build.core.buildType=org.eclipse.cdt.build.core.buildType.release,org.eclipse.cdt.build.core.buildArtefactType=org.eclipse.cdt.cross.arm.gnu.buildArtefactType.application"
+					description=""
+					id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.94669354"
+					name="Release" parent="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release">
+					<folderInfo
+						id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.94669354."
+						name="/" resourcePath="">
+						<toolChain
+							id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.release.351721824"
+							name="ARM Windows GCC (Sourcery G++ Lite)"
+							superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.toolchain.release">
+							<option
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level.1590278455"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.option.debugging.level"
+								value="org.eclipse.cdt.cross.arm.gnu.base.option.debugging.level.none"
+								valueType="enumerated" />
+							<targetPlatform
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.release.1767227870"
+								isAbstract="false" name="Windows Platform"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.platform.release" />
+							<builder buildPath="${workspace_loc:/jiu2}/Release"
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.release.1466550989"
+								managedBuildOn="true" name="ARM Sourcery Windows GNU Make builder.Release"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.builder.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.release.1814641631"
+								name="ARM Sourcery Windows GCC Assembler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.release">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.268013468"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.release.665827146"
+								name="ARM Sourcery Windows GCC C Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.release">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level.1371566081"
+									superClass="org.eclipse.cdt.cross.arm.gnu.c.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size"
+									valueType="enumerated" />
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.1174834441"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.release.2125943625"
+								name="ARM Sourcery Windows GCC C++ Compiler"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.compiler.release">
+								<option
+									id="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level.1554232357"
+									superClass="org.eclipse.cdt.cross.arm.gnu.cpp.compiler.option.optimization.level"
+									value="org.eclipse.cdt.cross.arm.gnu.base.option.optimization.level.size"
+									valueType="enumerated" />
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.cpp.compiler.base.input.616105895"
+									superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.cpp.compiler.base.input" />
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.release.1487005335"
+								name="ARM Sourcery Windows GCC C Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.linker.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.release.1015283248"
+								name="ARM Sourcery Windows GCC C++ Linker"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.cpp.linker.release">
+								<inputType
+									id="org.eclipse.cdt.cross.arm.gnu.cpp.linker.input.25892471"
+									superClass="org.eclipse.cdt.cross.arm.gnu.cpp.linker.input">
+									<additionalInput kind="additionalinputdependency"
+										paths="$(USER_OBJS)" />
+									<additionalInput kind="additionalinput" paths="$(LIBS)" />
+								</inputType>
+							</tool>
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base.1111066936"
+								name="ARM Sourcery Windows GCC Archiver"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.archiver.base" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.release.2141018870"
+								name="ARM Sourcery Windows GNU Create Flash Image"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createflash.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.release.142829142"
+								name="ARM Sourcery Windows GNU Create Listing"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.createlisting.release" />
+							<tool
+								id="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.release.958489293"
+								name="ARM Sourcery Windows GNU Print Size"
+								superClass="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.printsize.release" />
+						</toolChain>
+					</folderInfo>
+				</configuration>
+			</storageModule>
+		</cconfiguration>
+	</storageModule>
+	<storageModule moduleId="cdtBuildSystem" version="4.0.0">
+		<project
+			id="jiu2.org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.100428979"
+			name="ARM Cross Target Application" projectType="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf" />
+	</storageModule>
+	<storageModule moduleId="scannerConfiguration">
+		<autodiscovery enabled="true" problemReportingEnabled="true"
+			selectedProfileId="" />
+		<scannerConfigBuildInfo
+			instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851.;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.debug.1459231009;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.511095492">
+			<autodiscovery enabled="true" problemReportingEnabled="true"
+				selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC" />
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo
+			instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698.;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.release.2041978952;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.1099114177">
+			<autodiscovery enabled="true" problemReportingEnabled="true"
+				selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC" />
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo
+			instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.release.733821698.;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.assembler.release.1257324202;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.assembler.base.input.1885304264">
+			<autodiscovery enabled="true" problemReportingEnabled="true"
+				selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC" />
+		</scannerConfigBuildInfo>
+		<scannerConfigBuildInfo
+			instanceId="org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.debug.888315851.;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.elf.c.compiler.debug.1528791168;org.eclipse.cdt.cross.arm.gnu.sourcery.windows.c.compiler.base.input.324417530">
+			<autodiscovery enabled="true" problemReportingEnabled="true"
+				selectedProfileId="org.eclipse.cdt.cross.arm.gnu.ARM_CS_GCCWinManagedMakePerProjectProfileC" />
+		</scannerConfigBuildInfo>
+	</storageModule>
+	<storageModule moduleId="org.eclipse.cdt.core.LanguageSettingsProviders" />
+</cproject>

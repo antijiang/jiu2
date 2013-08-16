@@ -1,0 +1,13 @@
+".\output\main.obj",
+".\output\dali_drv.obj",
+".\output\key_scan.obj",
+".\output\lcd_drv.obj",
+".\output\system.obj",
+".\output\F410_FlashPrimitives.obj",
+".\output\F410_FlashUtils.obj",
+".\output\spicom_in.obj",
+".\output\spicom.obj" 
+TO ".\output\jiujing_rec" 
+PRINT(".\jiujing_rec.m51") RAMSIZE(256) 
+CODE( 0X0000-0X1FFF )
+XDATA( 0X0000-0X01FF )

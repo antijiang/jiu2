@@ -1,0 +1,29 @@
+
+
+1.SDA  SCK ， MCLK （不共用，平时为高）
+2.主机 需要调用 void InitSPICom(void) ，在主机通讯前调用，所有口为输入状态，端口电平一般为高
+
+4.主机发送命令 if(1==TEST_SPI(CMD_RD_ID))读取ID ,返回1 表明加密正确 在其他调用的头文件中，包含#include "spicom.h"
+/*****************************************
+返回-1； 通信失败
+返回 0:  低电平或ID错误
+返回 1:	正常或高电平
+****************************************/
+
+
+	 //TEST_SPI(CMD_CLR_P54)	 ;	//p5.4H
+	// TEST_SPI(CMD_SET_P54)	 ;	//p54=0
+	// TEST_SPI(CMD_CLR_P00)	 ;	//p5.4H
+	// TEST_SPI(CMD_SET_P00)	 ;	//p54=0
+	// TEST_SPI(CMD_RD_P11)	 ;
+/*****************************************
+5.一般只要修改spicom_in.h中的函数
+
+500ms超时 变量 SPITimeOut需要自己设置,利用计时器减到0为止
+#define	COM_TIME_OUT	500		//定义超时ms  此处定义为500ms ，一般不改动
+#define	BASE_COUNT	10		//每个计数代表的时间ms ，此处为10ms，每个平台不一样，要改
+
+
+//500ms 超时
+//500ms 的计数器50*10
+#define	COSTN_TimeOutCNT		COM_TIME_OUT/BASE_COUNT   // 需要的计数 值=COM_TIME_OUT/BASE_COUNT=基数如定时器，则COSTN_TimeOutCNT =500/10=50
