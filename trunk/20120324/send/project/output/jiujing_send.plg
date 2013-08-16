@@ -3,65 +3,20 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\project\send.uvproj
-Project File Date:  08/14/2013
+C:\Users\xd.jiang\git\jiu2\trunk\20120324\send\project\send.uvproj
+Project File Date:  08/16/2013
 
 <h2>Output:</h2>
-Build Project 'send' - Target 'send'
-compiling spicom.c...
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DALI_INIT?DALI_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETSEG?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY10US?SYSTEM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
-Program Size: data=33.1 xdata=205 code=10785
-creating hex file from ".\output\jiujing_send"...
-".\output\jiujing_send" - 0 Error(s), 6 Warning(s).
-Build Project 'send' - Target 'send'
-compiling key_scan.c...
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(574): warning C280: 'vol': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(597): warning C280: 'temp1': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(598): warning C280: 'temp3': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(775): error C141: syntax error near 'i'
-Target not created
-Build Project 'send' - Target 'send'
-compiling key_scan.c...
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(574): warning C280: 'vol': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(597): warning C280: 'temp1': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(598): warning C280: 'temp3': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(1094): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DALI_INIT?DALI_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETSEG?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY10US?SYSTEM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
-Program Size: data=33.1 xdata=205 code=10790
-creating hex file from ".\output\jiujing_send"...
-".\output\jiujing_send" - 0 Error(s), 10 Warning(s).
-Build Project 'send' - Target 'send'
+Build target 'send'
 compiling main.c...
 compiling dali_drv.c...
 compiling key_scan.c...
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(574): warning C280: 'vol': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(597): warning C280: 'temp1': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(598): warning C280: 'temp3': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(775): error C193: '=': illegal type conversion from/to 'void'
+..\app\key_scan.c(551): warning C280: 'vol': unreferenced local variable
+..\app\key_scan.c(576): warning C280: 'temp1': unreferenced local variable
+..\app\key_scan.c(577): warning C280: 'temp3': unreferenced local variable
+..\app\key_scan.c(1020): error C141: syntax error near '='
+..\app\key_scan.c(1219): error C141: syntax error near '='
+..\app\key_scan.c(1223): error C141: syntax error near '='
 compiling lcd_drv.c...
 compiling system.c...
 compiling nvram.c...
@@ -71,34 +26,111 @@ compiling F410_FlashPrimitives.c...
 compiling spicom_in.c...
 compiling spicom.c...
 Target not created
-Build Project 'send' - Target 'send'
+Build target 'send'
 compiling key_scan.c...
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(574): warning C280: 'vol': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(597): warning C280: 'temp1': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(598): warning C280: 'temp3': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(1094): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DALI_INIT?DALI_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETSEG?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY10US?SYSTEM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
-Program Size: data=33.1 xdata=205 code=10806
-creating hex file from ".\output\jiujing_send"...
-".\output\jiujing_send" - 0 Error(s), 10 Warning(s).
-Build Project 'send' - Target 'send'
+..\app\key_scan.c(554): error C141: syntax error near 'WORD'
+..\app\key_scan.c(554): error C202: 'Mvc': undefined identifier
+..\app\key_scan.c(1021): error C141: syntax error near '='
+..\app\key_scan.c(1220): error C141: syntax error near '='
+..\app\key_scan.c(1224): error C141: syntax error near '='
+Target not created
+Build target 'send'
 compiling key_scan.c...
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(574): warning C280: 'vol': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(597): warning C280: 'temp1': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(598): warning C280: 'temp3': unreferenced local variable
-F:\work2013\work\jiujing\jiaozhun2\20120324\send\app\key_scan.c(1096): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+..\app\key_scan.c(1021): error C141: syntax error near '='
+..\app\key_scan.c(1220): error C141: syntax error near '='
+..\app\key_scan.c(1224): error C141: syntax error near '='
+Target not created
+compiling key_scan.c...
+..\app\key_scan.c(1021): error C141: syntax error near '='
+..\app\key_scan.c(1220): error C141: syntax error near '='
+..\app\key_scan.c(1224): error C141: syntax error near '='
+..\app\key_scan.c - 3 Error(s), 0 Warning(s).
+compiling key_scan.c...
+..\app\key_scan.c(1021): error C141: syntax error near '='
+..\app\key_scan.c(1220): error C141: syntax error near '='
+..\app\key_scan.c(1224): error C141: syntax error near '='
+..\app\key_scan.c - 3 Error(s), 0 Warning(s).
+compiling key_scan.c...
+..\app\key_scan.c(1026): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+..\app\key_scan.c(1220): error C141: syntax error near '='
+..\app\key_scan.c(1224): error C141: syntax error near '='
+..\app\key_scan.c - 2 Error(s), 1 Warning(s).
+compiling key_scan.c...
+..\app\key_scan.c(1021): error C141: syntax error near '='
+..\app\key_scan.c(1220): error C141: syntax error near '='
+..\app\key_scan.c(1224): error C141: syntax error near '='
+..\app\key_scan.c - 3 Error(s), 0 Warning(s).
+compiling key_scan.c...
+..\app\key_scan.c(1026): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+..\app\key_scan.c(1220): error C141: syntax error near '='
+..\app\key_scan.c(1224): error C141: syntax error near '='
+..\app\key_scan.c - 2 Error(s), 1 Warning(s).
+compiling key_scan.c...
+..\app\key_scan.c(1026): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+..\app\key_scan.c - 0 Error(s), 1 Warning(s).
+Build target 'send'
+linking...
+BL51 BANKED LINKER/LOCATER V6.22 - SN: Eval Version
+COPYRIGHT KEIL ELEKTRONIK GmbH 1987 - 2009
+".\output\main.obj",
+".\output\dali_drv.obj",
+".\output\key_scan.obj",
+".\output\lcd_drv.obj",
+".\output\system.obj",
+".\output\nvram.obj",
+".\output\i2c.obj",
+".\output\F410_FlashUtils.obj",
+".\output\F410_FlashPrimitives.obj",
+".\output\spicom_in.obj",
+".\output\spicom.obj" 
+TO ".\output\jiujing_send" 
+PRINT(".\jiujing_send.m51") RAMSIZE(256) 
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DALI_INIT?DALI_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETSEG?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY10US?SYSTEM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 1DF6H BYTE (374%) *
+******************************************************************************
+Program Size: data=33.1 xdata=213 code=10814
+LINK/LOCATE RUN COMPLETE.  6 WARNING(S),  0 ERROR(S)
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DALI_INIT?DALI_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETSEG?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY10US?SYSTEM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
+*** FATAL ERROR L250: CODE SIZE LIMIT IN RESTRICTED VERSION EXCEEDED
+    MODULE:  D:\KEIL\C51\LIB\C51C.LIB (-----)
+    LIMIT:   0800H BYTES
+Target not created
+Rebuild target 'send'
+compiling main.c...
+compiling dali_drv.c...
+compiling key_scan.c...
+..\app\key_scan.c(1026): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+compiling lcd_drv.c...
+compiling system.c...
+compiling nvram.c...
+compiling i2c.c...
+compiling F410_FlashUtils.c...
+compiling F410_FlashPrimitives.c...
+compiling spicom_in.c...
+compiling spicom.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?DALI_INIT?DALI_DRV
@@ -112,23 +144,6 @@ linking...
     SEGMENT: ?PR?_DELAY10US?SYSTEM
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
-Program Size: data=33.1 xdata=213 code=10776
+Program Size: data=33.1 xdata=213 code=10814
 creating hex file from ".\output\jiujing_send"...
-".\output\jiujing_send" - 0 Error(s), 10 Warning(s).
-Build Project 'send' - Target 'send'
-linking...
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?DALI_INIT?DALI_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_SETSEG?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_DELAY10US?SYSTEM
-*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
-    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
-Program Size: data=33.1 xdata=213 code=10776
-creating hex file from ".\output\jiujing_send"...
-".\output\jiujing_send" - 0 Error(s), 6 Warning(s).
+".\output\jiujing_send" - 0 Error(s), 7 Warning(s).

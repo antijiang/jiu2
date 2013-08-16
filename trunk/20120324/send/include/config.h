@@ -86,9 +86,11 @@
 	
 #define	SW_DETECT()		P13
 
+//p15
 #define	PIO_ADJUST_DET	 	P15  //检测  酒精校准50mg  复用无线发送脚
 #define	PIO_CFG_DET	 		0x20    //1<<5
 
+//p00
 #define	PIO_ADJUST_DET20	 	P00  //20mg calibrate
 #define	PIO_CFG_DET20	 		0x01    //1<<5
 

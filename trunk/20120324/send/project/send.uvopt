@@ -115,10 +115,9 @@
         <tRmem>1</tRmem>
         <tRfunc>0</tRfunc>
         <tRbox>1</tRbox>
-        <tRtrace>0</tRtrace>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>9</nTsel>
+        <nTsel>-1</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -220,9 +219,6 @@
         <newCpu>0</newCpu>
         <uProt>0</uProt>
       </DebugFlag>
-      <Tracepoint>
-        <THDelay>0</THDelay>
-      </Tracepoint>
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
     </TargetOption>
@@ -233,7 +229,6 @@
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>1</FileNumber>
@@ -247,8 +242,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\app\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -257,7 +250,6 @@
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>2</GroupNumber>
       <FileNumber>2</FileNumber>
@@ -271,8 +263,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\RF\dali_drv.c</PathWithFileName>
       <FilenameWithoutPath>dali_drv.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
@@ -287,8 +277,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\app\key_scan.c</PathWithFileName>
       <FilenameWithoutPath>key_scan.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
@@ -303,8 +291,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\lcd_drv\lcd_drv.c</PathWithFileName>
       <FilenameWithoutPath>lcd_drv.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -313,7 +299,6 @@
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>3</GroupNumber>
       <FileNumber>5</FileNumber>
@@ -327,8 +312,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\SYS\system.c</PathWithFileName>
       <FilenameWithoutPath>system.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -337,7 +320,6 @@
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>4</GroupNumber>
       <FileNumber>6</FileNumber>
@@ -351,8 +333,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\nvram.c</PathWithFileName>
       <FilenameWithoutPath>nvram.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
@@ -367,8 +347,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\i2c.c</PathWithFileName>
       <FilenameWithoutPath>i2c.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
@@ -383,8 +361,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\F410_FlashUtils.c</PathWithFileName>
       <FilenameWithoutPath>F410_FlashUtils.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
@@ -399,8 +375,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\F410_FlashPrimitives.c</PathWithFileName>
       <FilenameWithoutPath>F410_FlashPrimitives.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -409,7 +383,6 @@
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
-    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>5</GroupNumber>
       <FileNumber>10</FileNumber>
@@ -423,8 +396,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\rec\其他平台主机控制程序\spicom_in.c</PathWithFileName>
       <FilenameWithoutPath>spicom_in.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
@@ -439,8 +410,6 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\rec\其他平台主机控制程序\spicom.c</PathWithFileName>
       <FilenameWithoutPath>spicom.c</FilenameWithoutPath>
-      <RteFlg>0</RteFlg>
-      <bShared>0</bShared>
     </File>
   </Group>
 
