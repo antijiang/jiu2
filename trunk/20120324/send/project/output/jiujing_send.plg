@@ -147,3 +147,64 @@ linking...
 Program Size: data=33.1 xdata=213 code=10814
 creating hex file from ".\output\jiujing_send"...
 ".\output\jiujing_send" - 0 Error(s), 7 Warning(s).
+Rebuild target 'send'
+compiling main.c...
+compiling dali_drv.c...
+compiling key_scan.c...
+..\app\key_scan.c(630): warning C280: 'vol': unreferenced local variable
+..\app\key_scan.c(658): warning C280: 'temp1': unreferenced local variable
+..\app\key_scan.c(659): warning C280: 'temp3': unreferenced local variable
+..\app\key_scan.c(1165): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+..\app\key_scan.c(1374): error C141: syntax error near '='
+..\app\key_scan.c(1380): error C141: syntax error near '='
+compiling lcd_drv.c...
+compiling system.c...
+compiling nvram.c...
+compiling i2c.c...
+compiling F410_FlashUtils.c...
+compiling F410_FlashPrimitives.c...
+compiling spicom_in.c...
+compiling spicom.c...
+Target not created
+Build target 'send'
+compiling key_scan.c...
+..\app\key_scan.c(1166): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+..\app\key_scan.c(1375): error C141: syntax error near '='
+..\app\key_scan.c(1381): error C141: syntax error near '='
+Target not created
+Build target 'send'
+compiling key_scan.c...
+..\app\key_scan.c(1166): warning C280: 'LABLE_SAVE_SINFO': unreferenced label
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DALI_INIT?DALI_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETSEG?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY10US?SYSTEM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
+Program Size: data=33.1 xdata=213 code=10814
+creating hex file from ".\output\jiujing_send"...
+".\output\jiujing_send" - 0 Error(s), 7 Warning(s).
+Build target 'send'
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?DALI_INIT?DALI_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_COLDCOMPSATION?KEY_SCAN
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_SETSEG?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?CLRDISPLAYBUF?LCD_DRV
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_DELAY10US?SYSTEM
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_FLASH_FILL?F410_FLASHUTILS
+Program Size: data=33.1 xdata=213 code=10814
+creating hex file from ".\output\jiujing_send"...
+".\output\jiujing_send" - 0 Error(s), 6 Warning(s).

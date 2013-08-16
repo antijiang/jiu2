@@ -631,6 +631,7 @@ CalALOTwo(WORD vol)
 {
   float pcal;
   WORD Mvc = SysInfo.VC + (SysInfo.VC20 - SysInfo.VC) / 2;     //A  M  B
+	vol=vol;
   if (SysInfo.VB < VC)
     VC = SysInfo.VB;
   if (VC > SysInfo.VC20)  //<20mg
@@ -655,8 +656,8 @@ void
 calALO()
 {
   BYTE i;
-  int32 temp1;  //,temp2 ;
-  WORD temp3;
+  int32 temp1=temp1;  //,temp2 ;
+  WORD temp3=temp3;
   WORD temp2;
   BYTE jiu_level;
   if (qishu < MIN_QISHU)
@@ -1155,91 +1156,92 @@ TestACHOL()
           if (AdjustSensor == 1)
             {
               SysInfo.VC = VC;
-          SysInfo.ADJUST| = 0x50;
-        }
-      else
-        {
-          SysInfo.VC20 = VC;
-          SysInfo.ADJUST |= 0x05;
-        }
-      LABLE_SAVE_SINFO:
-        {
-          extern WORD
-          CalChkSum(BYTE *p, BYTE len);
-          SysInfo.chksum = CalChkSum((BYTE*) &SysInfo, EEP_SYS_LENTH);
-        }
-      FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE*) &SysInfo, EEP_SYS_LENTH);
+              SysInfo.ADJUST |= 0x50;
+            }
+          else
+            {
+              SysInfo.VC20 = VC;
+              SysInfo.ADJUST |= 0x05;
+            }
+          LABLE_SAVE_SINFO:
+            {
+              extern WORD
+              CalChkSum(BYTE *p, BYTE len);
+              SysInfo.chksum = CalChkSum((BYTE*) &SysInfo, EEP_SYS_LENTH);
+            }
+          FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE*) &SysInfo,
+              EEP_SYS_LENTH);
 
-    }
-  break;
+        }
+      break;
 
-  }
+      }
 
-StateSensor = AL_STATE_EXIT;
-break;
+    StateSensor = AL_STATE_EXIT;
+    break;
 
 //退出状态
-case AL_STATE_EXIT:
-SensorHeatPowerOff();
-SensorPowerOff();
-StateSensor = AL_STATE_SLEEP_CNT;
+  case AL_STATE_EXIT:
+    SensorHeatPowerOff();
+    SensorPowerOff();
+    StateSensor = AL_STATE_SLEEP_CNT;
 //BatteryEnegyDetect();
 //if(AdjustSensor==1){if(CountHeat==2)DisplayCont=DISPLAY_TSTING ;   }
-break;
+    break;
 
 // **************************************
 //准备休眠
-case AL_STATE_SLEEP_CNT:
-CountHeat = 10;
-StateSensor++;
+  case AL_STATE_SLEEP_CNT:
+    CountHeat = 10;
+    StateSensor++;
 //BatteryEnegyDetect();
 
-break;
-case AL_STATE_SLEEP_CNT + 1:
-LABEL_AL_STATE_SLEEP_CNT:
+    break;
+  case AL_STATE_SLEEP_CNT + 1:
+    LABEL_AL_STATE_SLEEP_CNT:
 #ifdef	EXTERNAL_POWER_NOSLEEP		//硬件检测问题，外接电源 改为也休眠
-if(PCHARG_DET())
-  {	//充电
-    if((CountHeat==2)||(CountHeat==3))
-      {
-        Insystate=0;
-        CountHeat=20; //不休眠时间
-        DisplayCont= DISPLAY_TSTING;
+    if(PCHARG_DET())
+      {	//充电
+        if((CountHeat==2)||(CountHeat==3))
+          {
+            Insystate=0;
+            CountHeat=20; //不休眠时间
+            DisplayCont= DISPLAY_TSTING;
+          }
       }
-  }
-else
+    else
 #endif 
 //BatteryEnegyDetect();
-if (CountHeat == 0)
-  {
-    GoSleep();
-    //初始程序必须放在开中断后，延时程序使用了中断定时
+    if (CountHeat == 0)
       {
-        extern void
-        Init_LCD(void);
-        Init_LCD();
+        GoSleep();
+        //初始程序必须放在开中断后，延时程序使用了中断定时
+          {
+            extern void
+            Init_LCD(void);
+            Init_LCD();
+          }
+
+        Jdispidx = Jiulist.idx;		 //重新从当前的测量位置烧写
+        StateSensor = AL_STATE_SLEEP_CNT;
+        DisplayCont = DISPLAY_TSTING;
+
       }
 
-    Jdispidx = Jiulist.idx;		 //重新从当前的测量位置烧写
-    StateSensor = AL_STATE_SLEEP_CNT;
-    DisplayCont = DISPLAY_TSTING;
-
-  }
-
-break;
-default:
+    break;
+  default:
 //BatteryEnegyDetect();
-goto LABEL_AL_STATE_SLEEP_CNT;
-break;
-}
+    goto LABEL_AL_STATE_SLEEP_CNT;
+    break;
+    }
 
 }
 
 void
 MeasurePS()
 {
-StateSensor = TEST_INIT;
-HeatRetryTime = 0;
+  StateSensor = TEST_INIT;
+  HeatRetryTime = 0;
 }
 
 //校准酒精	灵敏度 	V2=	0.05%BAC测量电压，
@@ -1254,188 +1256,188 @@ HeatRetryTime = 0;
 void
 DO_Key_Action()
 {
-BYTE newkey;
+  BYTE newkey;
 
-if (NEW_KEY == KEY_NOKEY)
-NEW_KEY = ScanKey();
-if (StateSensor < AL_STATE_EXIT)
-{
-  if (NEW_KEY == KEY_DISPLAY)
+  if (NEW_KEY == KEY_NOKEY)
+    NEW_KEY = ScanKey();
+  if (StateSensor < AL_STATE_EXIT)
     {
-      StateSensor = AL_STATE_EXIT;
-      DisplayCont = DISPLAY_TSTING;
-      Insystate = 0;
-    }		 //显示就靓而非对吗  退出加热
+      if (NEW_KEY == KEY_DISPLAY)
+        {
+          StateSensor = AL_STATE_EXIT;
+          DisplayCont = DISPLAY_TSTING;
+          Insystate = 0;
+        }		 //显示就靓而非对吗  退出加热
+      NEW_KEY = KEY_NOKEY;
+    }
+  if (NEW_KEY == KEY_NOKEY)
+    return;
+  newkey = NEW_KEY;
   NEW_KEY = KEY_NOKEY;
-}
-if (NEW_KEY == KEY_NOKEY)
-return;
-newkey = NEW_KEY;
-NEW_KEY = KEY_NOKEY;
 
-Count_5S = 5;
+  Count_5S = 5;
 
-switch (newkey)
-{
-		 //对码
-case KEY_RANCODE:
-{
-  extern _SYSINFO SysInfo;
-  WORD tmpran;
-  DisplayCont = DISPLAY_NUM;
+  switch (newkey)
+    {
+  //对码
+  case KEY_RANCODE:
+    {
+      extern _SYSINFO SysInfo;
+      WORD tmpran;
+      DisplayCont = DISPLAY_NUM;
 
-  tmpran = rand();
-  SysInfo.TRANCODE = tmpran;
-  SysInfo.TRANCODE = SysInfo.TRANCODE << 12;
-  tmpran = rand() & 0x0fff;
-  SysInfo.TRANCODE |= tmpran;
+      tmpran = rand();
+      SysInfo.TRANCODE = tmpran;
+      SysInfo.TRANCODE = SysInfo.TRANCODE << 12;
+      tmpran = rand() & 0x0fff;
+      SysInfo.TRANCODE |= tmpran;
 
 #ifdef	DEBUG_BYLCD
-  DisBuffer[0] = (SysInfo.TRANCODE >> 12) & 0x0f;
-  DisBuffer[1] = (SysInfo.TRANCODE >> 8) & 0x0f;
-  DisBuffer[2] = (SysInfo.TRANCODE >> 4) & 0x0f;
-  DisBuffer[3] = SysInfo.TRANCODE & 0x0f;
-  Display_All();
+      DisBuffer[0] = (SysInfo.TRANCODE >> 12) & 0x0f;
+      DisBuffer[1] = (SysInfo.TRANCODE >> 8) & 0x0f;
+      DisBuffer[2] = (SysInfo.TRANCODE >> 4) & 0x0f;
+      DisBuffer[3] = SysInfo.TRANCODE & 0x0f;
+      Display_All();
 #endif
-  TransCmd = FUN_MATCH_CODE; //对码命令
-  SendRF(TransCmd);
-    {
-      extern WORD
-      CalChkSum(BYTE *p, BYTE len);
-      SysInfo.chksum = CalChkSum((BYTE*) &SysInfo, EEP_SYS_LENTH);
+      TransCmd = FUN_MATCH_CODE; //对码命令
+      SendRF(TransCmd);
+        {
+          extern WORD
+          CalChkSum(BYTE *p, BYTE len);
+          SysInfo.chksum = CalChkSum((BYTE*) &SysInfo, EEP_SYS_LENTH);
+        }
+      FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE*) &SysInfo, EEP_SYS_LENTH);
+      StateSensor = AL_STATE_SLEEP_CNT;
     }
-  FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE*) &SysInfo, EEP_SYS_LENTH);
-  StateSensor = AL_STATE_SLEEP_CNT;
-}
-break;
+    break;
 
-case KEY_EON:
-{
-  BYTE i;
-  //清掉酒杯字样
-  DisplayCont = DISPLAY_TSTING;
-  Display_All();
-  DisplayCont = DISPLAY_EONOFF;
-  DisBuffer[0] = CHAR_BLK;
-  DisBuffer[1] = CHAR_E;
-  DisBuffer[2] = CHAR_o;
-  DisBuffer[3] = CHAR_n;
-  //无酒精
-  LED_RED(LED_OFF);; //开红灯
-  LED_GREEN(LED_ON);; //关绿灯
-  Display_All();
-  for (i = 0; i < 2; i++) //		快速响两声 滴滴
+  case KEY_EON:
     {
-      StepUpSound();
-      BUZZY_ON()
-      ;
-      DelayXms(50);
-      BUZZY_OFF()
-      ;
-      DelayXms(50);
+      BYTE i;
+      //清掉酒杯字样
+      DisplayCont = DISPLAY_TSTING;
+      Display_All();
+      DisplayCont = DISPLAY_EONOFF;
+      DisBuffer[0] = CHAR_BLK;
+      DisBuffer[1] = CHAR_E;
+      DisBuffer[2] = CHAR_o;
+      DisBuffer[3] = CHAR_n;
+      //无酒精
+      LED_RED(LED_OFF);; //开红灯
+      LED_GREEN(LED_ON);; //关绿灯
+      Display_All();
+      for (i = 0; i < 2; i++) //		快速响两声 滴滴
+        {
+          StepUpSound();
+          BUZZY_ON()
+          ;
+          DelayXms(50);
+          BUZZY_OFF()
+          ;
+          DelayXms(50);
+        }
+      SendRF(FUN_UNLOCK_CAR);		  //发送开车信息
+      LED_GREEN(LED_OFF);
+
+      DelayXms(1000);	 //显示 on 1秒
     }
-  SendRF(FUN_UNLOCK_CAR);		  //发送开车信息
-  LED_GREEN(LED_OFF);
+    break;
 
-  DelayXms(1000);	 //显示 on 1秒
-}
-break;
-
-case KEY_TESTRF:
+  case KEY_TESTRF:
 #if 0 //def TEST_FACTORY
-  { static BYTE test1=0;
-    BYTE tmpcode;
-    test1++;
-    if(test1==4)test1=0;
-    if(test1==0) tmpcode=FUN_LOCK_CAR;
-    else if(test1==1) tmpcode=FUN_UNLOCK_CAR;
-    else if(test1==2) tmpcode=FUN_DETECT_CAR;
-    else if(test1==3) tmpcode=FUN_CHAOSHI_CAR;
-    else tmpcode=FUN_DETECT_CAR;
+      { static BYTE test1=0;
+        BYTE tmpcode;
+        test1++;
+        if(test1==4)test1=0;
+        if(test1==0) tmpcode=FUN_LOCK_CAR;
+        else if(test1==1) tmpcode=FUN_UNLOCK_CAR;
+        else if(test1==2) tmpcode=FUN_DETECT_CAR;
+        else if(test1==3) tmpcode=FUN_CHAOSHI_CAR;
+        else tmpcode=FUN_DETECT_CAR;
 
-    DisBuffer[3]= test1;
-    DisplayCont=DISPLAY_MATSEND;
-    Display_All();
-    DALI_Send(tmpcode);
-    StateSensor=AL_STATE_SLEEP_CNT;
+        DisBuffer[3]= test1;
+        DisplayCont=DISPLAY_MATSEND;
+        Display_All();
+        DALI_Send(tmpcode);
+        StateSensor=AL_STATE_SLEEP_CNT;
 
-  }
+      }
 #endif
-break;
+    break;
 
-case KEY_JIUJING:
-if (PI_ADJUST_DET() || PI_ADJUST_DET20())
-  {
-    DelayXms(100);
-    if (PI_ADJUST_DET())
+  case KEY_JIUJING:
+    if (PI_ADJUST_DET() || PI_ADJUST_DET20())
       {
-        AdjustSensor = 1;
-        SysInfo.ADJUST& =~0x50;
-        goto LABEL_ADJUST_ALO;
+        DelayXms(100);
+        if (PI_ADJUST_DET())
+          {
+            AdjustSensor = 1;
+            SysInfo.ADJUST	&=~0x50;
+            goto LABEL_ADJUST_ALO;
+          }
+        else if (PI_ADJUST_DET20())
+          {
+            AdjustSensor = 2;
+            SysInfo.ADJUST	&= ~0x05;
+            goto LABEL_ADJUST_ALO;
+          }
+
       }
-    else if (PI_ADJUST_DET20())
-      {
-        AdjustSensor = 2;
-        SysInfo.ADJUST& = ~0x05;
-        goto LABEL_ADJUST_ALO;
-      }
 
-  }
+    DisplayCont = DISPLAY_TSTING;
+    AdjustSensor = 0;
+    goto LABEL_TEST_ALO;
+    break;
+  case KEY_ADJUST:
+    LABEL_ADJUST_ALO: DisplayCont = DISPLAY_ADJ;
+    LABEL_TEST_ALO: Display_All();
+    MeasurePS();
+    break;
 
-DisplayCont = DISPLAY_TSTING;
-AdjustSensor = 0;
-goto LABEL_TEST_ALO;
-break;
-case KEY_ADJUST:
-LABEL_ADJUST_ALO: DisplayCont = DISPLAY_ADJ;
-LABEL_TEST_ALO: Display_All();
-MeasurePS();
-break;
-
-case KEY_DISPSTD:
-{
-  extern void
-  diaplay_std();
-  diaplay_std();
-}
-break;
+  case KEY_DISPSTD:
+    {
+      extern void
+      diaplay_std();
+      diaplay_std();
+    }
+    break;
 
 //显示
-case KEY_DISPLAY:
-if (Insystate == 0)
-  {
-    if (DisplayCont == DISPLAY_ALO)
+  case KEY_DISPLAY:
+    if (Insystate == 0)
       {
-        //Jdispidx++;
-        //if(Jdispidx>=MAX_JIULST)Jdispidx=0;
+        if (DisplayCont == DISPLAY_ALO)
+          {
+            //Jdispidx++;
+            //if(Jdispidx>=MAX_JIULST)Jdispidx=0;
 
-        //回看功能
-        if (Jdispidx != 0)
-          Jdispidx--;
-        else
-          Jdispidx = MAX_JIULST - 1;
+            //回看功能
+            if (Jdispidx != 0)
+              Jdispidx--;
+            else
+              Jdispidx = MAX_JIULST - 1;
 
-        //向看
-        //	Jdispidx++;
-        //	if(Jdispidx>=MAX_JIULST)Jdispidx=0;
+            //向看
+            //	Jdispidx++;
+            //	if(Jdispidx>=MAX_JIULST)Jdispidx=0;
+          }
+        DisplayCont = DISPLAY_ALO;
       }
-    DisplayCont = DISPLAY_ALO;
-  }
-else
-  {
-    DisplayCont++;
-    if (DisplayCont > DISPLAY_SYS_VC || DisplayCont < DISPLAY_SYS_RAN)
-      DisplayCont = DISPLAY_SYS_RAN;
+    else
+      {
+        DisplayCont++;
+        if (DisplayCont > DISPLAY_SYS_VC || DisplayCont < DISPLAY_SYS_RAN)
+          DisplayCont = DISPLAY_SYS_RAN;
 
-  }
-StateSensor = AL_STATE_SLEEP_CNT;
+      }
+    StateSensor = AL_STATE_SLEEP_CNT;
 
-break;
-default:
+    break;
+  default:
 //		KEY_PRINTF(printf("-othkey-"));
-break;
+    break;
 
-}
+    }
 
 }
 
