@@ -2,7 +2,7 @@
 
 
 #include "general.h"
-#ifdef	NVRAM_USE_EEP24CXX 
+#ifdef	NVRAM_USE_EEP24CXX
 #include "	nvram.h"
 /////////////////////////////////////////
 // Set I2C SCL pin high/low.
@@ -43,18 +43,19 @@ void i2cSetSDA_Chk(bit bSet)
 // Delay 4us
 //////////////////////////////////////////////////////////////
 void i2c_Delay(void)
-{	BYTE i;
-	for (i=0;i<30;i++)
-	{
-    _nop_();
-    _nop_();
-    _nop_();
-    _nop_();
-    _nop_();
-    _nop_();
-    _nop_();
-    _nop_();
-	}
+{
+    BYTE i;
+    for (i = 0; i < 30; i++)
+    {
+        _nop_();
+        _nop_();
+        _nop_();
+        _nop_();
+        _nop_();
+        _nop_();
+        _nop_();
+        _nop_();
+    }
 }
 //////////////////////////////////////////////////////
 // I2C start signal.
@@ -74,7 +75,7 @@ BOOL i2c_Start(void)
     i2c_Delay();
     i2cSetSCL_Chk(_HIGH);
     i2c_Delay();
-	
+
     if ((i2cSCL_PIN_STATUS() == _LOW) || (i2cSDA_PIN_STATUS() == _LOW))
     {
         bStatus = FALSE;
@@ -85,7 +86,7 @@ BOOL i2c_Start(void)
         i2c_Delay();
         i2cSetSCL(_LOW);
     }
-	
+
     return bStatus;
 }
 /////////////////////////////////////////
@@ -142,7 +143,7 @@ BOOL i2c_SendByte(BYTE ucVal)
     i2c_Delay();
     bAck = i2cSDA_PIN_STATUS(); // recieve acknowlege
     i2cSetSCL(_LOW);
-	
+
     return (bAck);
 }
 //////////////////////////////////////////////////////////////////////////
@@ -157,14 +158,14 @@ BYTE i2c_ReceiveByte(BOOL bAck)
 
     while(ucMask)
     {
-		i2cSetSDA(_HIGH);
-		i2cSetSCL(_HIGH);
-		
-		if(i2cSDA_PIN_STATUS() == _HIGH)
-			ucReceive |= ucMask;
+        i2cSetSDA(_HIGH);
+        i2cSetSCL(_HIGH);
 
-		i2cSetSCL(_LOW);
-		i2c_Delay();
+        if(i2cSDA_PIN_STATUS() == _HIGH)
+            ucReceive |= ucMask;
+
+        i2cSetSCL(_LOW);
+        i2c_Delay();
 
         ucMask >>= 1;
     } // while
@@ -199,14 +200,14 @@ BOOL i2c_AccessStart(BYTE ucSlaveAdr, I2C_Direction trans_t)
 
     ucDummy = I2C_ACCESS_DUMMY_TIME;
     while (ucDummy--)
-    {    
-	i2c_Delay();
+    {
+        i2c_Delay();
         if (i2c_Start() == FALSE)
             continue;
 
         if (i2c_SendByte(ucSlaveAdr) == I2C_ACKNOWLEDGE) // check acknowledge
             return TRUE;
-		//printf("ucSlaveAdr====%x", ucSlaveAdr);
+        //printf("ucSlaveAdr====%x", ucSlaveAdr);
         i2c_Stop();
         Delay1ms(1);
     }
@@ -216,15 +217,15 @@ BOOL i2c_AccessStart(BYTE ucSlaveAdr, I2C_Direction trans_t)
 void Delay1ms(WORD wValue)
 {
     WORD wCount; // loop counter
-   extern 	void DelayXms(WORD td) ;
-DelayXms(wValue);
-return;
+    extern 	void DelayXms(WORD td) ;
+    DelayXms(wValue);
+    return;
     while (wValue--)
     {
         wCount = DELAY_1MS_PERIOD; // reset loop counter
         //wCount = g_ucTestCnt; // reset loop counter
 
-      //  WatchDogClear();
+        //  WatchDogClear();
         while (wCount--) ;
     } // while
 }
@@ -240,7 +241,7 @@ return;
 void i2cBurstWriteBytes(BYTE ucSlaveAdr, BYTE ucSubAdr, BYTE *pBuf, BYTE ucBufLen)
 {
     BYTE ucDummy; // loop dummy
-	BYTE tmp;
+    BYTE tmp;
     ucDummy = I2C_ACCESS_DUMMY_TIME;
     while(ucDummy--)
     {
@@ -250,7 +251,8 @@ void i2cBurstWriteBytes(BYTE ucSlaveAdr, BYTE ucSubAdr, BYTE *pBuf, BYTE ucBufLe
             continue;
 
         while(ucBufLen--) // loop of writting data
-        {	tmp=*pBuf;
+        {
+            tmp = *pBuf;
             i2c_SendByte(tmp); // send byte
             pBuf++; // next byte pointer
         } // while
@@ -259,7 +261,7 @@ void i2cBurstWriteBytes(BYTE ucSlaveAdr, BYTE ucSubAdr, BYTE *pBuf, BYTE ucBufLe
     } // while
 
     i2c_Stop();
-    
+
 }
 
 /////////////////////////////////////////////////////////////////
@@ -274,7 +276,7 @@ void i2cBurstWriteBytes(BYTE ucSlaveAdr, BYTE ucSubAdr, BYTE *pBuf, BYTE ucBufLe
 void i2cBurstReadBytes(BYTE ucSlaveAdr, BYTE ucSubAdr, BYTE *pBuf, BYTE ucBufLen)
 {
     BYTE ucDummy; // loop dummy
-	BYTE tmp;
+    BYTE tmp;
     ucDummy = I2C_ACCESS_DUMMY_TIME;
     while(ucDummy--)
     {
@@ -288,7 +290,8 @@ void i2cBurstReadBytes(BYTE ucSlaveAdr, BYTE ucSubAdr, BYTE *pBuf, BYTE ucBufLen
             continue;
 
         while(ucBufLen--) // loop to burst read
-        {	tmp=   i2c_ReceiveByte(ucBufLen); // receive byte
+        {
+            tmp =   i2c_ReceiveByte(ucBufLen); // receive byte
             *pBuf = tmp;
 
             pBuf++; // next byte pointer
@@ -308,13 +311,13 @@ void i2cBurstReadBytes(BYTE ucSlaveAdr, BYTE ucSubAdr, BYTE *pBuf, BYTE ucBufLen
 
 #if 1
 void i2c_WriteTBL(BYTE deviceID, WORD addr, BYTE *buffer, BYTE count)
-{ 
-  i2cBurstWriteBytes( deviceID, addr,buffer, count);
+{
+    i2cBurstWriteBytes( deviceID, addr, buffer, count);
 }
 
 void i2c_ReadTBL(BYTE deviceID, WORD addr, BYTE *buffer, BYTE count)
-{ 
-  i2cBurstReadBytes(deviceID, addr,buffer,count);
+{
+    i2cBurstReadBytes(deviceID, addr, buffer, count);
 }
 
 

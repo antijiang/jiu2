@@ -66,7 +66,8 @@ void Port_IO_Init()
     P1MDOUT   = 0xA0;
     P0SKIP    = 0xCF;
     P1SKIP    = 0x7F;
-    XBR1      = 0x40;  xx
+    XBR1      = 0x40;
+    xx
 }
 
 void Oscillator_Init()

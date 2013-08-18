@@ -1,5 +1,5 @@
 /******************************************************************
-  
+
 *******************************************************************/
 
 #ifndef __CONFIG_H__
@@ -38,21 +38,22 @@
 #define		SensorPowerOff()  SetPWM(02,00)
 
 
-#endif 
+#endif
 #ifndef	  SECURE_SPI
 #define	   SensorHeatPowerOn()	//P07=0	//灯丝
 #define	   SensorHeatPowerOff()	//P07=1
 #else
-#define	   SensorHeatPowerOn()	
-#define	   SensorHeatPowerOff()	
+#define	   SensorHeatPowerOn()
+#define	   SensorHeatPowerOff()
 #endif
-#define	SensorStart100HZ() 
+#define	SensorStart100HZ()
 
 
 #define STANDARD_REF_VOLT	3000	   //系统输出标准参考电压
 #define	DEFAULT_NOCOAL_VA	1580		   //无酒精
 #define	DEFAULT_NOCOAL_VB	2180
 #define	DEFALT_130PPM_VC	1650
+#define	DEFALT_52PPM_VC20	1900
 
 #define MAX_ALCOHOLICITY1	  (40)
 #define MAX_ALCOHOLICITY2	  (104)
@@ -64,8 +65,8 @@
 #define	LED_OFF		1
 #define	LEDIO	P05
 
-//#define	LED_RED(x)		P05=x	
-//#define	LED_GREEN(x)	P20=x	
+//#define	LED_RED(x)		P05=x
+//#define	LED_GREEN(x)	P20=x
 //#define	BUZZY_ON()		P17=1
 //#define	BUZZY_OFF()		P17=0
 #endif
@@ -73,7 +74,7 @@
 #define	LED_ON		0xff
 #define	LED_OFF		0x0
 #define	LEDIO	P05
-#define	LED_RED(x)			
+#define	LED_RED(x)
 #define	LED_GREEN(x)	//SetPWM(02,x)
 
 #define	BUZZY_ON()		{SetPWM(00,0xff);BZY_on=1;}
@@ -83,7 +84,7 @@
 #define	LCDBAK_OFF		0
 #define	LCDBAKLIGHT(x)	SetPWM(1,x)
 
-	
+
 #define	SW_DETECT()		P13
 
 //p15
@@ -110,5 +111,5 @@
 
 #define	PWR_G1		P04
 #define	PWR_G2		P01
-	
+
 #endif

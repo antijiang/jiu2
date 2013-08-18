@@ -53,7 +53,7 @@ sfr TMR3RLL         = 0x92;            // Timer/counter 3 reload low
 sfr TMR3RLH         = 0x93;            // Timer/counter 3 reload high
 sfr TMR3L           = 0x94;            // Timer/counter 3 low
 sfr TMR3H           = 0x95;            // Timer/counter 3 high
-sfr16 	IDA0=		0x96;
+sfr16 	IDA0 =		0x96;
 sfr IDA0L           = 0x96;            // Current mode DAC0 low
 sfr IDA0H           = 0x97;            // Current mode DAC0 high
 sfr SCON0           = 0x98;            // UART0 control
@@ -91,7 +91,7 @@ sfr IDA0CN          = 0xB9;            // Current mode DAC0 control
 sfr ADC0TK          = 0xBA;            // ADC0 tracking
 sfr ADC0MX          = 0xBB;            // ADC0 mux
 sfr ADC0CF          = 0xBC;            // ADC0 configuration
-sfr16	ADC0		=0xbd;
+sfr16	ADC0		= 0xbd;
 sfr ADC0L           = 0xBD;            // ADC0 data low
 sfr ADC0H           = 0xBE;            // ADC0 data high
 sfr P1MASK          = 0xBF;            // Port1 mask
@@ -105,7 +105,7 @@ sfr ADC0LTH         = 0xC6;            // ADC0 window less than high byte
 sfr P0MASK          = 0xC7;            // Port0 mask
 sfr TMR2CN          = 0xC8;            // Timer/counter 2 control
 sfr REG0CN          = 0xC9;            // Voltage regulator control
-sfr16 TMR2RL   = 0xca;                 // Timer2 reload value 
+sfr16 TMR2RL   = 0xca;                 // Timer2 reload value
 sfr16 TMR2     = 0xcc;                 // Timer2 counter
 sfr TMR2RLL         = 0xCA;            // Timer/counter 2 reload low
 sfr TMR2RLH         = 0xCB;            // Timer/counter 2 reload high
@@ -138,7 +138,7 @@ sfr EIE1            = 0xE6;            // Extended interrupt enable 1
 sfr EIE2            = 0xE7;            // Extended interrupt enable 2
 sfr ADC0CN          = 0xE8;            // ADC0 control
 
-sfr16	PCA0CP1=0xE9;
+sfr16	PCA0CP1 = 0xE9;
 sfr PCA0CPL1        = 0xE9;            // PCA0 module 1 capture low
 sfr PCA0CPH1        = 0xEA;            // PCA0 module 1 capture high
 sfr PCA0CPL2        = 0xEB;            // PCA0 module 2 capture low
@@ -150,7 +150,7 @@ sfr B               = 0xF0;            // B register
 sfr P0MDIN          = 0xF1;            // Port 0 input mode configuration
 sfr P1MDIN          = 0xF2;            // Port 1 input mode configuration
 sfr P2MDIN          = 0xF3;            // Port 2 input mode configuration
-sfr16 	IDA1=		0xf4;
+sfr16 	IDA1 =		0xf4;
 sfr IDA1L           = 0xF4;            // Current mode DAC1 data low
 sfr IDA1H           = 0xF5;            // Current mode DAC1 data high
 sfr EIP1            = 0xF6;            // Extended interrupt priority 1
@@ -158,7 +158,7 @@ sfr EIP2            = 0xF7;            // Extended interrupt priority 2
 sfr SPI0CN          = 0xF8;            // SPI0 control
 sfr PCA0L           = 0xF9;            // PCA0 counter low
 sfr PCA0H           = 0xFA;            // PCA0 counter high
-sfr16	PCA0CP0=0xFB;
+sfr16	PCA0CP0 = 0xFB;
 sfr PCA0CPL0        = 0xFB;            // PCA0 module 0 capture low
 sfr PCA0CPH0        = 0xFC;            // PCA0 module 0 capture high
 sfr PCA0CPL4        = 0xFD;            // PCA0 module 4 capture low
@@ -182,7 +182,7 @@ sbit IT0       = 0x88;                 // Ext. Interrupt 0 type
 
 // SCON0 0x98
 sbit S0MODE    = 0x9F;                 // UART0 mode
-                                       // Bit 6 Unused
+// Bit 6 Unused
 sbit MCE0      = 0x9D;                 // UART0 mce
 sbit REN0      = 0x9C;                 // UART0 RX enable
 sbit TB80      = 0x9B;                 // UART0 TX bit 8
@@ -201,7 +201,7 @@ sbit ET0       = 0xA9;                 // Timer 0 interrupt enable
 sbit EX0       = 0xA8;                 // External interrupt 0 enable
 
 // IP 0xB8
-                                       // Bit 7 Unused
+// Bit 7 Unused
 sbit PSPI0     = 0xBE;                 // SPI0 priority
 sbit PT2       = 0xBD;                 // Timer 2 priority
 sbit PS0       = 0xBC;                 // UART0 priority
@@ -271,32 +271,32 @@ sbit TXBMT     = 0xF9;                 // SPI0 TX buffer empty flag
 sbit SPIEN     = 0xF8;                 // SPI0 SPI0 enable
 
 
-sbit P00   = P0^0;
-sbit P01   = P0^1;
-sbit P02   = P0^2;
-sbit P03   = P0^3;
-sbit P04   = P0^4;
-sbit P05   = P0^5;
-sbit P06   = P0^6;
-sbit P07   = P0^7;
+sbit P00   = P0 ^ 0;
+sbit P01   = P0 ^ 1;
+sbit P02   = P0 ^ 2;
+sbit P03   = P0 ^ 3;
+sbit P04   = P0 ^ 4;
+sbit P05   = P0 ^ 5;
+sbit P06   = P0 ^ 6;
+sbit P07   = P0 ^ 7;
 
-sbit P10   = P1^0;
-sbit P11   = P1^1;
-sbit P12   = P1^2;
-sbit P13   = P1^3;
-sbit P14   = P1^4;
-sbit P15   = P1^5;
-sbit P16   = P1^6;
-sbit P17   = P1^7;
+sbit P10   = P1 ^ 0;
+sbit P11   = P1 ^ 1;
+sbit P12   = P1 ^ 2;
+sbit P13   = P1 ^ 3;
+sbit P14   = P1 ^ 4;
+sbit P15   = P1 ^ 5;
+sbit P16   = P1 ^ 6;
+sbit P17   = P1 ^ 7;
 
-sbit P20   = P2^0;
-sbit P21   = P2^1;
-sbit P22   = P2^2;
-sbit P23   = P2^3;
-sbit P24   = P2^4;
-sbit P25   = P2^5;
-sbit P26   = P2^6;
-sbit P27   = P2^7;
+sbit P20   = P2 ^ 0;
+sbit P21   = P2 ^ 1;
+sbit P22   = P2 ^ 2;
+sbit P23   = P2 ^ 3;
+sbit P24   = P2 ^ 4;
+sbit P25   = P2 ^ 5;
+sbit P26   = P2 ^ 6;
+sbit P27   = P2 ^ 7;
 //-----------------------------------------------------------------------------
 // Interrupt Priorities
 //-----------------------------------------------------------------------------

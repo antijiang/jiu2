@@ -6,7 +6,7 @@
 #include <stdio.h>
 #include <intrins.h>
 #include "mytype.h"
-#include "c8051f330.h"   
+#include "c8051f330.h"
 #include <string.h>
 
 #include "F410_FlashPrimitives.h"

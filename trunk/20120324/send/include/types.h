@@ -1,4 +1,4 @@
-											 
+
 typedef signed char	Schar;
 typedef signed int	Sint;
 typedef signed long	Slong;
@@ -57,8 +57,8 @@ typedef void              *PVOID;
 
 typedef enum BOOL_enum
 {
-	FALSE,
-  	TRUE
+    FALSE,
+    TRUE
 } BOOL;
 
 #define _HIGH    1

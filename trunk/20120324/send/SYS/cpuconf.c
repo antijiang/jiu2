@@ -37,10 +37,10 @@ void ADC_Init()
 
 void Voltage_Reference_Init()
 {
-    REF0CN    =0x07;
-REF0CN    |= 0x08;
+    REF0CN    = 0x07;
+    REF0CN    |= 0x08;
 }
-		
+
 void Port_IO_Init()
 {
     // P0.0  -  Skipped,     Open-Drain, Analog
@@ -76,7 +76,7 @@ void Oscillator_Init()
     OSCXCN    = 0x67;
     for (i = 0; i < 3000; i++);  // Wait 1ms for initialization
     while ((OSCXCN & 0x80) == 0);
-    OSCICN    = 0x83;			  //内部高使能 
+    OSCICN    = 0x83;			  //内部高使能
 }
 
 void Interrupts_Init()

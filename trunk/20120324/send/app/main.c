@@ -35,8 +35,7 @@ BYTE NEW_KEY = KEY_NOKEY;
 
 _SYSINFO SysInfo;
 _JIUJING_LST Jiulist;
-extern void
-Init_sensor();
+extern void Init_sensor();
 extern BYTE StateSensor; //AL_STATE_EXIT
 extern BYTE DisplayCont;
 extern BYTE DisBuffer[];
@@ -46,17 +45,17 @@ BYTE BZY_on;
 WORD
 CalChkSum(BYTE *p, BYTE len)
 {
-  BYTE i;
+    BYTE i;
 
-  WORD chksum = 0;
-//	p=(BYTE*)&SysInfo;
-  p = p + 2;						//跳过最开始的校验码数据
-  for (i = 2; i < len; i++)
+    WORD chksum = 0;
+    //	p=(BYTE*)&SysInfo;
+    p = p + 2;						//跳过最开始的校验码数据
+    for (i = 2; i < len; i++)
     {
-      chksum += *p;
-      p++;
+        chksum += *p;
+        p++;
     }
-  return chksum;
+    return chksum;
 }
 #endif
 ////////////////////////////////////////////////////////////////////////////
@@ -73,65 +72,72 @@ CalChkSum(BYTE *p, BYTE len)
 void
 Init_EPROM()
 {
-  BYTE buf, retrycount = 3;
-  _SYSINFO tmpsysinfo;						//={0,0};
+    BYTE buf, retrycount = 3;
+    _SYSINFO tmpsysinfo;						//={0,0};
 
-  WORD sum;
-  BOOL eepok;
-  extern BYTE Jdispidx;
-  DelayXms(300);
-  Jiulist.idx = 0 - 1;
-  for (buf = 0; buf < MAX_JIULST; buf++)
-    Jiulist.Jvol[buf] = 0xffff;
+    WORD sum;
+    BOOL eepok;
+    extern BYTE Jdispidx;
+    DelayXms(300);
+    Jiulist.idx = 0 - 1;
+    for (buf = 0; buf < MAX_JIULST; buf++)
+        Jiulist.Jvol[buf] = 0xffff;
 
 #ifndef NVRAM_USE_EEP24CXX
-  do
+    do
     {
-      FLASH_Read(&buf, (FLADDR) EEPROM_ID, 1);
-      FLASH_Read((BYTE*) &tmpsysinfo, (FLADDR) (EEP_SYS_TBLSTART),EEP_SYS_LENTH);
-      sum = CalChkSum((BYTE*) &tmpsysinfo, EEP_SYS_LENTH);
-      if ((buf == BOARD_ID_VER)&&(sum==tmpsysinfo.chksum)){eepok=1;break;}
-      DelayXms(300);
+        FLASH_Read(&buf, (FLADDR) EEPROM_ID, 1);
+        FLASH_Read((BYTE *) &tmpsysinfo, (FLADDR) (EEP_SYS_TBLSTART), EEP_SYS_LENTH);
+        sum = CalChkSum((BYTE *) &tmpsysinfo, EEP_SYS_LENTH);
+        if ((buf == BOARD_ID_VER) && (sum == tmpsysinfo.chksum))
+        {
+            eepok = 1;
+            break;
+        }
+        DelayXms(300);
     }
-  while (retrycount--);
+    while (retrycount--);
 
-  if (eepok)
+    if (eepok)
 #endif
-    { //read from flash
+    {
+        //read from flash
 
-      FLASH_Read((BYTE*) &SysInfo, (FLADDR) (EEP_SYS_TBLSTART), EEP_SYS_LENTH);
-      FLASH_Read((BYTE*) &Jiulist, (FLADDR) (EEP_JIULST_TBLSTART),
-          EEP_JIULST_LENTH);
+        FLASH_Read((BYTE *) &SysInfo, (FLADDR) (EEP_SYS_TBLSTART), EEP_SYS_LENTH);
+        FLASH_Read((BYTE *) &Jiulist, (FLADDR) (EEP_JIULST_TBLSTART),
+                   EEP_JIULST_LENTH);
 
     }
 #ifndef NVRAM_USE_EEP24CXX
-  else
+    else
     {
-      DisplayCont = DISPLAY_ERR0;
-      Display_All();	   //显示初始错误
-      //初始数据
-      SysInfo.TRANCODE = 0x5555;
-      SysInfo.ADJUST = 0;
-      SysInfo.VA =
-          (WORD) ((DWORD) DEFAULT_NOCOAL_VA * 1024 / STANDARD_REF_VOLT);		//校准
-      SysInfo.VB =
-          (WORD) ((DWORD) DEFAULT_NOCOAL_VB * 1024 / STANDARD_REF_VOLT);		//校准
-      SysInfo.VC = (WORD) ((DWORD) DEFALT_130PPM_VC * 1024 / STANDARD_REF_VOLT); //130PPM
-      SysInfo.chksum = CalChkSum((BYTE*) &SysInfo, EEP_SYS_LENTH);
-      FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE*) &SysInfo, EEP_SYS_LENTH);
-      DPRINTF(printf("-----InitEPROM-----...\r\n")) ;
-      FLASH_Update((FLADDR) EEP_JIULST_TBLSTART, (BYTE*) &Jiulist,
-          EEP_JIULST_LENTH);
-      buf = BOARD_ID_VER;
-      FLASH_Update((FLADDR) EEPROM_ID, (BYTE *) &buf, 1);
+        DisplayCont = DISPLAY_ERR0;
+        Display_All();	   //显示初始错误
+        //初始数据
+        SysInfo.TRANCODE = 0x5555;
+        SysInfo.ADJUST = 0;
+        SysInfo.VA =
+            (WORD) ((DWORD) DEFAULT_NOCOAL_VA * 1024 / STANDARD_REF_VOLT);		//校准
+        SysInfo.VB =
+            (WORD) ((DWORD) DEFAULT_NOCOAL_VB * 1024 / STANDARD_REF_VOLT);		//校准
+        SysInfo.VC = (WORD) ((DWORD) DEFALT_130PPM_VC * 1024 / STANDARD_REF_VOLT); //130PPM
+        SysInfo.VC20 = (WORD) ((DWORD) DEFALT_52PPM_VC20 * 1024 / STANDARD_REF_VOLT); //20mg
+
+        SysInfo.chksum = CalChkSum((BYTE *) &SysInfo, EEP_SYS_LENTH);
+        FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE *) &SysInfo, EEP_SYS_LENTH);
+        DPRINTF(printf("-----InitEPROM-----...\r\n")) ;
+        FLASH_Update((FLADDR) EEP_JIULST_TBLSTART, (BYTE *) &Jiulist,
+                     EEP_JIULST_LENTH);
+        buf = BOARD_ID_VER;
+        FLASH_Update((FLADDR) EEPROM_ID, (BYTE *) &buf, 1);
 
     }
 #endif
-  //初始化变量
+    //初始化变量
     {
-      if (Jiulist.idx >= MAX_JIULST)
-        Jiulist.idx = 0 - 1;
-      Jdispidx = Jiulist.idx;
+        if (Jiulist.idx >= MAX_JIULST)
+            Jiulist.idx = 0 - 1;
+        Jdispidx = Jiulist.idx;
 
     }
 
@@ -147,26 +153,26 @@ void
 Task_1000ms()
 {
 
-  /*1 SECOND*/
+    /*1 SECOND*/
 
-  if (F_FlashSave)
+    if (F_FlashSave)
     {
-      F_FlashSave--;
-      if (F_FlashSave == 0)
-        DAPI_StoreFlashConfig();
+        F_FlashSave--;
+        if (F_FlashSave == 0)
+            DAPI_StoreFlashConfig();
     }
-  if (++sys_time.Time_1_sec >= 60) //60sec
+    if (++sys_time.Time_1_sec >= 60) //60sec
     {
 
-      sys_time.Time_1_sec = 0;
-      F_1MIN = 1;
+        sys_time.Time_1_sec = 0;
+        F_1MIN = 1;
 #if 0
 
         {
-          if(++sys_time.Time_1_min>=60) //60min
+            if(++sys_time.Time_1_min >= 60) //60min
             {
-              sys_time.Time_1_min=0;
-              if(++sys_time.Time_1_hour>=24)sys_time.Time_1_hour=0;
+                sys_time.Time_1_min = 0;
+                if(++sys_time.Time_1_hour >= 24)sys_time.Time_1_hour = 0;
 
             }
         }
@@ -186,11 +192,11 @@ void
 diaplay_std()
 {
 
-  extern void
-  DIsplaySYSV(WORD tmp);
-  DisplayCont = DISPLAY_SYS_VS;
-  Display_All();
-  Insystate = 1;
+    extern void
+    DIsplaySYSV(WORD tmp);
+    DisplayCont = DISPLAY_SYS_VS;
+    Display_All();
+    Insystate = 1;
 
 }
 #ifdef	SECURE_SPI
@@ -215,141 +221,142 @@ Qishu_EN();
 void
 main(void)
 {
-  PCA0MD &= ~0x40;                    // Disable Watchdog timer
-  Init_VAR();
-  Init_Device();
-  Init_patch();
-  BUZZY_OFF()
-  ;
-  Init_sensor();
-  P1MDOUT &= ~0x06;	//p11 p12 非推挽	 LCD时钟数据和加密
-  P1MDOUT &= ~0x40;	//p16 非推挽	LCD选通
-  P1MDOUT &= ~0x80;	//p17 非推挽  LCD电源总开开关
+    PCA0MD &= ~0x40;                    // Disable Watchdog timer
+    Init_VAR();
+    Init_Device();
+    Init_patch();
+    BUZZY_OFF()
+    ;
+    Init_sensor();
+    P1MDOUT &= ~0x06;	//p11 p12 非推挽	 LCD时钟数据和加密
+    P1MDOUT &= ~0x40;	//p16 非推挽	LCD选通
+    P1MDOUT &= ~0x80;	//p17 非推挽  LCD电源总开开关
 #ifdef	SECURE_SPI
-  P0MDOUT &= ~0x80;	//p07 非推挽   //加密MCLK
-  P07 = 1;
+    P0MDOUT &= ~0x80;	//p07 非推挽   //加密MCLK
+    P07 = 1;
 #endif
-  P0MDOUT &= ~0x20;  //充满检测 ，高：充满或未冲  低：充电
-  P1 |= 0x46;	  //srb clk data
-  PO_LCD_POWER(P_LCD_ON);
-  Init_LCD();
-  Init_EPROM();
+    P0MDOUT &= ~0x20;  //充满检测 ，高：充满或未冲  低：充电
+    P1 |= 0x46;	  //srb clk data
+    PO_LCD_POWER(P_LCD_ON);
+    Init_LCD();
+    Init_EPROM();
 #ifdef	SECURE_SPI
     {
-      extern void
-      InitSPICom(void);
-      extern char
-      TEST_SPI(char CMD_a);
-      BYTE tryc = 3;
-      InitSPICom();
-      F_demo = 1;
-      do
+        extern void
+        InitSPICom(void);
+        extern char
+        TEST_SPI(char CMD_a);
+        BYTE tryc = 3;
+        InitSPICom();
+        F_demo = 1;
+        do
         {
-          if (1 == TEST_SPI(CMD_RD_ID))
+            if (1 == TEST_SPI(CMD_RD_ID))
             {
-              F_demo = 0;
-              break;
+                F_demo = 0;
+                break;
             }
 
-          DelayXms(300);
+            DelayXms(300);
 
         }
-      while (tryc--);
-      VDM0CN |= 0x80; // 低电压复位监视
-      if (1 == F_demo)
+        while (tryc--);
+        VDM0CN |= 0x80; // 低电压复位监视
+        if (1 == F_demo)
         {
 
-          DisplayCont = DISPLAY_DEMO;
-          Display_All();	   //显示初始错误
+            DisplayCont = DISPLAY_DEMO;
+            Display_All();	   //显示初始错误
 
         }
 
     }
 
 #endif
-  DPRINTF(printf("MAIN Program\n" )) ;
+    DPRINTF(printf("MAIN Program\n" )) ;
 
-  while (1)
+    while (1)
     {
 
         {
-//WORD i  ;extern 	  BYTE StateSensor	  ;
-//     	if(StateSensor==-1)
-//		LEDIO=!LEDIO;
+            //WORD i  ;extern 	  BYTE StateSensor	  ;
+            //     	if(StateSensor==-1)
+            //		LEDIO=!LEDIO;
         }
-      if (F_5ms)
+        if (F_5ms)
         {
-          F_5ms = 0;
-          QishuDetect();
+            F_5ms = 0;
+            QishuDetect();
 
 #ifdef FANGBO_PWR
-            { extern void TestACHOL();
-              TestACHOL();
+            {
+                extern void TestACHOL();
+                TestACHOL();
 
             }
 #endif
         }
-      //	if(F_10ms)
-      //	{
-      //		F_10ms=0;
+        //	if(F_10ms)
+        //	{
+        //		F_10ms=0;
 
-      //	}
+        //	}
 
-      if (F_50ms)
+        if (F_50ms)
         {
-          F_50ms = 0;
+            F_50ms = 0;
 
-          Task_50ms();
+            Task_50ms();
 #ifndef FANGBO_PWR
             {
-              extern void
-              TestACHOL();
-              TestACHOL();
+                extern void
+                TestACHOL();
+                TestACHOL();
             }
 #endif
 
         }
-      if (F_100ms)
+        if (F_100ms)
         {
-          extern void
-          BatteryEnegyDetect();
+            extern void
+            BatteryEnegyDetect();
 
-          F_100ms = 0;
-          Qishu_EN();
-          DO_Key_Action();
-          Display_All();
+            F_100ms = 0;
+            Qishu_EN();
+            DO_Key_Action();
+            Display_All();
             {
-              extern void
-              SendCycbuf(void);
-              SendCycbuf();
+                extern void
+                SendCycbuf(void);
+                SendCycbuf();
 
             }
-          BatteryEnegyDetect();	 //201204
+            BatteryEnegyDetect();	 //201204
 
         }
-      if (F_200ms)
+        if (F_200ms)
         {
 
-          F_200ms = 0;
+            F_200ms = 0;
 
         }
-      if (F_500ms)
+        if (F_500ms)
         {
-          F_500ms = 0;
+            F_500ms = 0;
 
         }
 
-      if (F_1000ms)
+        if (F_1000ms)
         {
-          extern BYTE CountHeat;
-          F_1000ms = 0;
-          Task_1000ms();
+            extern BYTE CountHeat;
+            F_1000ms = 0;
+            Task_1000ms();
 
-          if (CountHeat != 0)
+            if (CountHeat != 0)
             {
-              CountHeat--;
+                CountHeat--;
             }
-          //	DPRINTF(printf("time=%bd \n" ,sys_time.Time_1_sec))	 ;
+            //	DPRINTF(printf("time=%bd \n" ,sys_time.Time_1_sec))	 ;
 
         }
 

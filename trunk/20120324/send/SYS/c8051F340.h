@@ -98,9 +98,9 @@ sfr  IP           =  0xB8;             // Interrupt Priority
 sfr  CLKMUL       =  0xB9;             // Clock Multiplier
 sfr  AMX0N        =  0xBA;             // AMUX0 Negative Channel Select
 sfr  AMX0P        =  0xBB;             // AMUX0 Positive Channel Select
-#define ADC0MX  AMX0P 
+#define ADC0MX  AMX0P
 sfr  ADC0CF       =  0xBC;             // ADC0 Configuration
-sfr16	ADC0		=0xbd;
+sfr16	ADC0		= 0xbd;
 sfr  ADC0L        =  0xBD;             // ADC0 Low
 sfr  ADC0H        =  0xBE;             // ADC0 High
 sfr  SMB0CN       =  0xC0;             // SMBus Control
@@ -113,7 +113,7 @@ sfr  ADC0LTH      =  0xC6;             // ADC0 Less-Than Compare Word High
 sfr  P4           =  0xC7;             // Port 4 Latch
 sfr  TMR2CN       =  0xC8;             // Timer/Counter 2 Control
 sfr  REG0CN       =  0xC9;             // Voltage Regulator Control
-sfr16 TMR2RL   = 0xca;                 // Timer2 reload value 
+sfr16 TMR2RL   = 0xca;                 // Timer2 reload value
 sfr16 TMR2     = 0xcc;                 // Timer2 counter
 sfr  TMR2RLL      =  0xCA;             // Timer/Counter 2 Reload Low
 sfr  TMR2RLH      =  0xCB;             // Timer/Counter 2 Reload High
@@ -144,11 +144,11 @@ sfr  SMOD1        =  0xE5;             // UART1 Mode
 sfr  EIE1         =  0xE6;             // Extended Interrupt Enable 1
 sfr  EIE2         =  0xE7;             // Extended Interrupt Enable 2
 sfr  ADC0CN       =  0xE8;             // ADC0 Control
-sfr16	PCA0CP1=0xE9;
+sfr16	PCA0CP1 = 0xE9;
 sfr  PCA0CPL1     =  0xE9;             // PCA0 Capture 1 Low
 sfr  PCA0CPH1     =  0xEA;             // PCA0 Capture 1 High
 
-sfr16	PCA0CP2=0xeB;
+sfr16	PCA0CP2 = 0xeB;
 sfr  PCA0CPL2     =  0xEB;             // PCA0 Capture 2 Low
 sfr  PCA0CPH2     =  0xEC;             // PCA0 Capture 2 High
 sfr  PCA0CPL3     =  0xED;             // PCA0 Capture 3 Low
@@ -163,10 +163,10 @@ sfr  P4MDIN       =  0xF5;             // Port 4 Input Mode Configuration
 sfr  EIP1         =  0xF6;             // Extended Interrupt Priority 1
 sfr  EIP2         =  0xF7;             // Extended Interrupt Priority 2
 sfr  SPI0CN       =  0xF8;             // SPI0 Control
-sfr16	PCA0=0xF9;
+sfr16	PCA0 = 0xF9;
 sfr  PCA0L        =  0xF9;             // PCA0 Counter Low
 sfr  PCA0H        =  0xFA;             // PCA0 Counter High
-sfr16	PCA0CP0=0xFB;
+sfr16	PCA0CP0 = 0xFB;
 sfr  PCA0CPL0     =  0xFB;             // PCA0 Capture 0 Low
 sfr  PCA0CPH0     =  0xFC;             // PCA0 Capture 0 High
 sfr  PCA0CPL4     =  0xFD;             // PCA0 Capture 4 Low
@@ -190,7 +190,7 @@ sbit IT0     = 0x88;                   // Ext interrupt 0 type
 
 // SCON0 0x98
 sbit S0MODE  = 0x9F;                   // Serial mode control bit 0
-                                       // Bit6 UNUSED
+// Bit6 UNUSED
 sbit MCE0    = 0x9D;                   // Multiprocessor communication enable
 sbit REN0    = 0x9C;                   // Receive enable
 sbit TB80    = 0x9B;                   // Transmit bit 8
@@ -209,7 +209,7 @@ sbit ET0     = 0xA9;                   // Timer0 interrupt enable
 sbit EX0     = 0xA8;                   // External interrupt 0 enable
 
 // IP 0xB8
-                                       // Bit7 UNUSED
+// Bit7 UNUSED
 sbit PSPI0   = 0xBE;                   // SPI0 interrupt priority
 sbit PT2     = 0xBD;                   // Timer2 priority
 sbit PS0     = 0xBC;                   // UART0 priority
@@ -235,7 +235,7 @@ sbit TF2LEN  = 0xCD;                   // Timer2 low byte interrupt enable
 sbit T2SOF   = 0xCC;                   // Timer2 start-of-frame capture enable
 sbit T2SPLIT = 0xCB;                   // Timer2 split mode enable
 sbit TR2     = 0xCA;                   // Timer2 on/off control
-                                       // Bit1 UNUSED
+// Bit1 UNUSED
 sbit T2XCLK  = 0xC8;                   // Timer2 external clock select
 
 // PSW 0xD0
@@ -251,7 +251,7 @@ sbit P       = 0xD0;                   // Accumulator parity flag
 // PCA0CN 0xD8
 sbit CF      = 0xDF;                   // PCA0 counter overflow flag
 sbit CR      = 0xDE;                   // PCA0 counter run control
-                                       // Bit5 UNUSED
+// Bit5 UNUSED
 sbit CCF4    = 0xDC;                   // PCA0 module4 capture/compare flag
 sbit CCF3    = 0xDB;                   // PCA0 module3 capture/compare flag
 sbit CCF2    = 0xDA;                   // PCA0 module2 capture/compare flag
@@ -278,41 +278,41 @@ sbit NSSMD0  = 0xFA;                   // SPI0 slave select mode 0
 sbit TXBMT   = 0xF9;                   // SPI0 transmit buffer empty
 sbit SPIEN   = 0xF8;                   // SPI0 SPI enable
 
-sbit P00   = P0^0;
-sbit P01   = P0^1;
-sbit P02   = P0^2;
-sbit P03   = P0^3;
-sbit P04   = P0^4;
-sbit P05   = P0^5;
-sbit P06   = P0^6;
-sbit P07   = P0^7;
+sbit P00   = P0 ^ 0;
+sbit P01   = P0 ^ 1;
+sbit P02   = P0 ^ 2;
+sbit P03   = P0 ^ 3;
+sbit P04   = P0 ^ 4;
+sbit P05   = P0 ^ 5;
+sbit P06   = P0 ^ 6;
+sbit P07   = P0 ^ 7;
 
-sbit P10   = P1^0;
-sbit P11   = P1^1;
-sbit P12   = P1^2;
-sbit P13   = P1^3;
-sbit P14   = P1^4;
-sbit P15   = P1^5;
-sbit P16   = P1^6;
-sbit P17   = P1^7;
+sbit P10   = P1 ^ 0;
+sbit P11   = P1 ^ 1;
+sbit P12   = P1 ^ 2;
+sbit P13   = P1 ^ 3;
+sbit P14   = P1 ^ 4;
+sbit P15   = P1 ^ 5;
+sbit P16   = P1 ^ 6;
+sbit P17   = P1 ^ 7;
 
-sbit P20   = P2^0;
-sbit P21   = P2^1;
-sbit P22   = P2^2;
-sbit P23   = P2^3;
-sbit P24   = P2^4;
-sbit P25   = P2^5;
-sbit P26   = P2^6;
-sbit P27   = P2^7;
+sbit P20   = P2 ^ 0;
+sbit P21   = P2 ^ 1;
+sbit P22   = P2 ^ 2;
+sbit P23   = P2 ^ 3;
+sbit P24   = P2 ^ 4;
+sbit P25   = P2 ^ 5;
+sbit P26   = P2 ^ 6;
+sbit P27   = P2 ^ 7;
 
-sbit P30   = P3^0;
-sbit P31   = P3^1;
-sbit P32   = P3^2;
-sbit P33   = P3^3;
-sbit P34   = P3^4;
-sbit P35   = P3^5;
-sbit P36   = P3^6;
-sbit P37   = P3^7;
+sbit P30   = P3 ^ 0;
+sbit P31   = P3 ^ 1;
+sbit P32   = P3 ^ 2;
+sbit P33   = P3 ^ 3;
+sbit P34   = P3 ^ 4;
+sbit P35   = P3 ^ 5;
+sbit P36   = P3 ^ 6;
+sbit P37   = P3 ^ 7;
 //-----------------------------------------------------------------------------
 // Interrupt Priorities
 //-----------------------------------------------------------------------------

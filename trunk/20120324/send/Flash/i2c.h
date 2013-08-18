@@ -2,15 +2,16 @@
 #define _I2C_H_
 
 #ifdef _I2C_C_
-  #define _I2CDEC_
+#define _I2CDEC_
 #else
-  #define _I2CDEC_ extern
+#define _I2CDEC_ extern
 #endif
 
 
 typedef enum i2c_direction
-{ I2C_WRITE,
-  I2C_READ
+{
+    I2C_WRITE,
+    I2C_READ
 } I2C_Direction;
 
 #define I2C_DEVICE_ADR_WRITE(slave_adr)   (slave_adr & ~_BIT0)

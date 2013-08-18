@@ -37,18 +37,18 @@ void ADC_Init()
 
 void Voltage_Reference_Init()
 {
-    REF0CN    = 0x0F;
+    REF0CN    = 0x0E;
 }
 
 void Port_IO_Init()
 {
-    // P0.0  -  Unassigned,  Open-Drain, Digital
+    // P0.0  -  Skipped,     Open-Drain, Digital
     // P0.1  -  Skipped,     Open-Drain, Digital
     // P0.2  -  Skipped,     Open-Drain, Analog
     // P0.3  -  Skipped,     Open-Drain, Analog
     // P0.4  -  Unassigned,  Open-Drain, Digital
-    // P0.5  -  Unassigned,  Push-Pull,  Digital
-    // P0.6  -  Skipped,     Push-Pull,  Digital
+    // P0.5  -  Unassigned,  Open-Drain, Digital
+    // P0.6  -  Skipped,     Open-Drain, Digital
     // P0.7  -  Skipped,     Push-Pull,  Digital
 
     // P1.0  -  Skipped,     Open-Drain, Analog
@@ -62,9 +62,9 @@ void Port_IO_Init()
 
     P0MDIN    = 0xF3;
     P1MDIN    = 0xEE;
-    P0MDOUT   = 0xE0;
+    P0MDOUT   = 0x80;
     P1MDOUT   = 0xA0;
-    P0SKIP    = 0xCE;
+    P0SKIP    = 0xCF;
     P1SKIP    = 0x7F;
     XBR1      = 0x40;
 }

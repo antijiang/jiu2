@@ -59,7 +59,7 @@
 // General configuration commands
 #define DALI_RESET                        32
 #define DALI_STORE_ACTUAL                 33
-       
+
 // Arc power parameters settings
 #define DALI_STORE_MAX                    42
 #define DALI_STORE_MIN                    43
@@ -68,13 +68,13 @@
 #define DALI_STORE_FADE_TIME              46
 #define DALI_STORE_FADE_RATE              47
 #define DALI_STORE_SCENE                  64            // 64 - 79
-        
+
 // System parameters settings
 #define DALI_REMOVE_SCENE                 80            // 80 - 95
 #define DALI_ADD_TO_GROUP                 96            // 96 - 111
 #define DALI_REMOVE_GROUP                 112           // 112 - 127
 #define DALI_STORE_SHORT_ADD              128
-        
+
 // Queries related to status information
 #define DALI_QUERY_STATUS                 144
 #define DALI_QUERY_BALLAST                145
@@ -88,7 +88,7 @@
 #define DALI_QUERY_DEVICE                 153
 #define DALI_QUERY_MINIMUM                154
 #define DALI_QUERY_PFAILURE               155
-        
+
 // Queries related to arc power parameters settings
 #define DALI_QUERY_ACTUAL                 160
 #define DALI_QUERY_MAX_LEVEL              161
@@ -104,10 +104,10 @@
 #define DALI_QUERY_ADDRESS_H              194
 #define DALI_QUERY_ADDRESS_M              195
 #define DALI_QUERY_ADDRESS_L              196
-       
+
 // Terminate special processes
 #define DALI_TERMINATE                    0xA1          // command 256
-        
+
 // Download information to the dtr
 #define DALI_DATA_TRANS_REG               0xA3
 
@@ -135,38 +135,38 @@
 #define	DALI_MAX_LAMP	64
 #define	DALI_MAX_GROUP	16
 
-#define	DALI_SPECIAL_ADDR_REG	
-#define	DALI_SPECIAL_CMD_REG	
+#define	DALI_SPECIAL_ADDR_REG
+#define	DALI_SPECIAL_CMD_REG
 
 void DCMD_Off(BYTE BSGaddr);
 
 void     DCMD_SetDTR(BYTE dat);
-void	    DCMD_SetLevel(BYTE BSGaddr,BYTE level);
-void	    DCMD_StoreDTR(BYTE BSGaddr,BYTE cmd,BYTE dat);
-void     DCMD_SetFadeTime(BYTE BSGaddr,BYTE fadet);
-void     DCMD_SetFadeRate(BYTE BSGaddr,BYTE fade);
+void	    DCMD_SetLevel(BYTE BSGaddr, BYTE level);
+void	    DCMD_StoreDTR(BYTE BSGaddr, BYTE cmd, BYTE dat);
+void     DCMD_SetFadeTime(BYTE BSGaddr, BYTE fadet);
+void     DCMD_SetFadeRate(BYTE BSGaddr, BYTE fade);
 void     DCMD_RecallMax(BYTE BSGaddr);
 void     DCMD_RecallMin(BYTE BSGaddr);
-BYTE 	DCMD_GotoScene(BYTE BSGaddr,BYTE SceneNo);
-void DCMD_DimUpDown(BYTE BSGaddr,BYTE IsUp);
-void DCMD_DimStepUpDown(BYTE BSGaddr,BYTE IsUp);
-void DCMD_DimStepUpDown_OnOff(BYTE BSGaddr,BYTE IsUp);
- void    DCMD_StoreScenFromActualLevel(BYTE BSGaddr,BYTE SceNo);
+BYTE 	DCMD_GotoScene(BYTE BSGaddr, BYTE SceneNo);
+void DCMD_DimUpDown(BYTE BSGaddr, BYTE IsUp);
+void DCMD_DimStepUpDown(BYTE BSGaddr, BYTE IsUp);
+void DCMD_DimStepUpDown_OnOff(BYTE BSGaddr, BYTE IsUp);
+void    DCMD_StoreScenFromActualLevel(BYTE BSGaddr, BYTE SceNo);
 
 void DAPI_RandomAllocateAllAddress(void);
 BOOL DAPI_AllocateOneAddress(BYTE saddr);
 
 void DaliPhysicalSelect(void);
 
-BYTE 	DCMD_AddToGroup(BYTE BSGaddr,BYTE grp)	;
-BYTE 	DCMD_RemoveFromGroup(BYTE BSGaddr,BYTE grp);
-BYTE 	DCMD_QueryScene(BYTE saddr,BYTE SceneNo);
+BYTE 	DCMD_AddToGroup(BYTE BSGaddr, BYTE grp)	;
+BYTE 	DCMD_RemoveFromGroup(BYTE BSGaddr, BYTE grp);
+BYTE 	DCMD_QueryScene(BYTE saddr, BYTE SceneNo);
 BYTE 	DCMD_QueryBallast(BYTE saddr);
 WORD 	DCMD_QueryGRPW(BYTE Saddr);
 BYTE 	DCMD_QueryActuaLevel(BYTE saddr);
 BYTE 	DCMD_QueryMissingShortAddress(BYTE saddr);
 void DAPI_RandomAllocateNoneAddress( );
-void 
+void
 DAPI_RandomAllocateSameAddress(BYTE addr);
 #endif
 

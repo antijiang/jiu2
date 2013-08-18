@@ -7,7 +7,7 @@
 ; DALI forward frame format:
 ; 		| S	| 	8 address bits | 8 command bits | stop |
 ; 		|  1  |  1  |  0  |  0  |  0  |  0  |  0  |  1  |  1  |  0  |  1  |  1  |  1  |  1  |  0  |  0  |  0  | | |
-;	++++ +-+	
+;	++++ +-+
 ;		|  |
 ;	      +-+
 ; |2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE|2TE| 4TE |
@@ -27,7 +27,7 @@
 ************************************************************************************/
 #ifndef	_DALI_DRV_C_
 #define	_DALI_DRV_C_
-#pragma 
+#pragma
 #include "GENERAL.H "
 
 #define	T_TORANCE	0.30
@@ -55,14 +55,14 @@ static BYTE SendData[4]; // holds received slave backward frame
 
 static BYTE f_repeat; // flag command shall be repeated
 
-//static 
+//static
 BYTE f_busy; // flag DALI transfer busy
 static //HLdata   HLdw
-	DWORD forwardframe; 
+DWORD forwardframe;
 //BYTE F_enRec=0;
-#define	DALI_SEND_INDICATOR		
+#define	DALI_SEND_INDICATOR
 static BYTE gbDALI_Answer;
-   
+
 
 #define	DALI_ACT_FLAG	0x8000
 #define	DALI_ACK		0x80
@@ -81,14 +81,14 @@ static BYTE gbDALI_Answer;
 ///////////////
 void ResetTmrPCA2Duratio(WORD Newpt)
 {
-	WORD temp=PCA0;	
-	temp=temp+Newpt;		// ~ 2400 Hz
-	PCA0CPM2&=~0x01;	// disable capture interrupt
-	CCF2=0;
-	PCA0CPL2=LOBYTE(temp);  //有可能误读
-	PCA0CPH2=HIBYTE(temp);
-	PCA0CPM2=0x49;	// enable timer
-  }
+    WORD temp = PCA0;
+    temp = temp + Newpt;		// ~ 2400 Hz
+    PCA0CPM2 &= ~0x01;	// disable capture interrupt
+    CCF2 = 0;
+    PCA0CPL2 = LOBYTE(temp); //有可能误读
+    PCA0CPH2 = HIBYTE(temp);
+    PCA0CPM2 = 0x49;	// enable timer
+}
 
 ////////////////////////////////////////////////////////////////////////////
 ///////////////
@@ -113,7 +113,7 @@ void ResetTmrPCA2Duratio(WORD Newpt)
 //#define	DISABLE_PCA1()				PCA0CPM1&=~0x01
 #define	ENABLE_PCA1()				{PCA0CPM1|=0x31	;CCF1=0;/*F_enRec=1;*/}// enable rx, capture on both edges
 #define	ENABLE_RX_BOTH_EDGE()		ENABLE_PCA1()
-#define	DISABLE_RX()				DISABLE_PCA1()	
+#define	DISABLE_RX()				DISABLE_PCA1()
 
 #define SET_DALI_SEND_INDICATOR()
 #define CLR_DALI_SEND_INDICATOR()
@@ -121,63 +121,64 @@ void ResetTmrPCA2Duratio(WORD Newpt)
 #pragma NOAREGS
 
 //manchester 编码发送
-void DALI_SendData(void)	  
+void DALI_SendData(void)
 {
-	 BYTE temp1=0,temp;
-	ResetTmrPCA2Duratio(TE); // reset timer
-   // interrupt for DALI send
-	{
-		
-		if (Dovalue)	DALI_SETH(); // DALI output pin high
-		else			DALI_SETL(); // DALI output pin low
+    BYTE temp1 = 0, temp;
+    ResetTmrPCA2Duratio(TE); // reset timer
+    // interrupt for DALI send
+    {
 
-	
+        if (Dovalue)	DALI_SETH(); // DALI output pin high
+        else			DALI_SETL(); // DALI output pin low
+
+
         if (position == 0) // 0TE second half of start bit = 1
-		{
-	
-			Dovalue = 1;//设置下一电平1; 
-		   
-		
-		}
-		else if (position < (33+32)) // 1TE - 32+32 TE, so address + command
-		{//设置8BIT ADDRESS,8BIT COMMAND
-			//Dovalue 
-			//forwardframe=0x55aa;
-			//temp=forwardframe;
-			
-			temp1=(32+32 - position)/2;
-			temp= forwardframe>> temp1 ;
-		//	temp= _iror_( forwardframe,temp1);
-			Dovalue=temp&0x01;
-			//Dovalue = (forward >> ((32 - position)/2)) & 1;
-			if (position & 1)
-			Dovalue = !Dovalue; // invert if first half of data bit
-		}
-		else if (position == (33+32)) // 33TE start of stop bit (4TE)
-		{ 
-			Dovalue = 1;	//设置STOP位
-			SET_DALI_SEND_INDICATOR();
-		}
+        {
 
-		//4te+7te =0.417ms*4+ 2.92ms(7*0.417)到达了
-		else if (position == (33+32+1)) // 44TE, end stop bits 
-		{
-			
-			DISABLE_TX_SEND(); // stop and reset timer
-			CCF2=0;
-			DISABLE_RX(); //禁止接受
-			CLR_DALI_SEND_INDICATOR();
-		
-			DALI_SETL();
-			f_busy = 0; // end of transmission
-		//	if (f_repeat) // repeat forward frame ?
-			//	f_dalitx = 1; // yes, set flag to signal application
-			
-		}
+            Dovalue = 1;//设置下一电平1;
 
-	position++;
-//	T0IR = 0x01; // reset MR0 interrupt flag
-}
+
+        }
+        else if (position < (33 + 32)) // 1TE - 32+32 TE, so address + command
+        {
+            //设置8BIT ADDRESS,8BIT COMMAND
+            //Dovalue
+            //forwardframe=0x55aa;
+            //temp=forwardframe;
+
+            temp1 = (32 + 32 - position) / 2;
+            temp = forwardframe >> temp1 ;
+            //	temp= _iror_( forwardframe,temp1);
+            Dovalue = temp & 0x01;
+            //Dovalue = (forward >> ((32 - position)/2)) & 1;
+            if (position & 1)
+                Dovalue = !Dovalue; // invert if first half of data bit
+        }
+        else if (position == (33 + 32)) // 33TE start of stop bit (4TE)
+        {
+            Dovalue = 1;	//设置STOP位
+            SET_DALI_SEND_INDICATOR();
+        }
+
+        //4te+7te =0.417ms*4+ 2.92ms(7*0.417)到达了
+        else if (position == (33 + 32 + 1)) // 44TE, end stop bits
+        {
+
+            DISABLE_TX_SEND(); // stop and reset timer
+            CCF2 = 0;
+            DISABLE_RX(); //禁止接受
+            CLR_DALI_SEND_INDICATOR();
+
+            DALI_SETL();
+            f_busy = 0; // end of transmission
+            //	if (f_repeat) // repeat forward frame ?
+            //	f_dalitx = 1; // yes, set flag to signal application
+
+        }
+
+        position++;
+        //	T0IR = 0x01; // reset MR0 interrupt flag
+    }
 
 
 }
@@ -196,38 +197,38 @@ void DALI_SendData(void)
 void DALI_Send_Start(void)
 {
 
- 	f_busy = 1; // set transfer activate flag
+    f_busy = 1; // set transfer activate flag
 
- //激活再生电路
-	DALI_SETH();
-	DelayXms(15);
-	DALI_SETL();
-	DelayXms(15);
-	
-	DALI_SETH();
-	DelayXms(15);
-	DALI_SETL();
-	DelayXms(15);
-	DALI_SETH();
-	DelayXms(15);
-	DALI_SETL();
-	DelayXms(15)
-	
-	;
-	DALI_SETH();
-	Dovalue = 0; // 
-	position = 0;
+    //激活再生电路
+    DALI_SETH();
+    DelayXms(15);
+    DALI_SETL();
+    DelayXms(15);
+
+    DALI_SETH();
+    DelayXms(15);
+    DALI_SETL();
+    DelayXms(15);
+    DALI_SETH();
+    DelayXms(15);
+    DALI_SETL();
+    DelayXms(15)
+
+    ;
+    DALI_SETH();
+    Dovalue = 0; //
+    position = 0;
 
 
-	//T0的匹配寄存器T0MR0值设为TE，T0还有捕获寄存器T0CR0
-	//T0可选捕获或匹配方式进行中断，这里选匹配中断而禁止捕获中断，
-	//当T0TC的值与T0MR0的值相等时产生中断，并且T0TC复位
-	ResetTmrPCA2Duratio(TE*1.5);
-	DALI_SETH();
-	
-//	while (f_busy) ; // Wait until dali port is idle
-//	DelayXms(5);
-	
+    //T0的匹配寄存器T0MR0值设为TE，T0还有捕获寄存器T0CR0
+    //T0可选捕获或匹配方式进行中断，这里选匹配中断而禁止捕获中断，
+    //当T0TC的值与T0MR0的值相等时产生中断，并且T0TC复位
+    ResetTmrPCA2Duratio(TE * 1.5);
+    DALI_SETH();
+
+    //	while (f_busy) ; // Wait until dali port is idle
+    //	DelayXms(5);
+
 }
 
 #pragma NOAREGS
@@ -240,28 +241,28 @@ void DALI_Send_Start(void)
 //初始大力的变量
 void DALI_Init(void)
 {
-                                                                                                                                
-	 f_busy=0;
-	 position=0;
-	 DISABLE_TX_SEND();
+
+    f_busy = 0;
+    position = 0;
+    DISABLE_TX_SEND();
 }
 void DaliSendRep()
-{	
-BYTE i=0;
+{
+    BYTE i = 0;
 
-	f_repeat=0;
-	DALI_Send_Start();
-	/*
-	if(f_repeat)
-	{
-		for(i=0;i<4;i++)
-		DALI_Send_Start();
-		f_repeat=0;
-	}
-	*/
-//	DelayXms(50);
-	DelayXms(30); //正常状态
-	//DelayXms(150);//针对NEC 
+    f_repeat = 0;
+    DALI_Send_Start();
+    /*
+    if(f_repeat)
+    {
+    	for(i=0;i<4;i++)
+    	DALI_Send_Start();
+    	f_repeat=0;
+    }
+    */
+    //	DelayXms(50);
+    DelayXms(30); //正常状态
+    //DelayXms(150);//针对NEC
 }
 
 //组合DALI命令 ，并设定发送
@@ -269,12 +270,12 @@ BYTE i=0;
 //（1|16位随机）+4bit随机+4bit命令+4bit命令反码+4bit 固定0101
 void	DALI_Send(BYTE dalicmd)
 {
-extern _SYSINFO SysInfo	 ;
-	forwardframe=  ((WORD)dalicmd<<8)| (((~dalicmd)<<4)&0xf0)  |0x05   ;
-	forwardframe|=0x80000000  ;
-	forwardframe|=(SysInfo.TRANCODE<<12);
-//	forwardframe=0x80000005;
-	DaliSendRep();
+    extern _SYSINFO SysInfo	 ;
+    forwardframe =  ((WORD)dalicmd << 8) | (((~dalicmd) << 4) & 0xf0)  | 0x05   ;
+    forwardframe |= 0x80000000  ;
+    forwardframe |= (SysInfo.TRANCODE << 12);
+    //	forwardframe=0x80000005;
+    DaliSendRep();
 }
 
 

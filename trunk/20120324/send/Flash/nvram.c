@@ -130,7 +130,7 @@ void rmBurstWriteBytes(WORD wIndex, BYTE *pBuf, WORD ucBufLen)
         // EEPROM page write
 #if (RM_EEPROM_TYPE <= RM_TYPE_24C16)
         i2cBurstWriteBytes(rmCalDeviceAdr(wIndex), LOBYTE(wIndex), pBuf, ucWriteCount);
-        
+
 #elif (RM_EEPROM_TYPE == RM_TYPE_24C32)
         rmPageWrite(wIndex, pBuf, ucWriteCount);
 #endif
@@ -142,40 +142,40 @@ void rmBurstWriteBytes(WORD wIndex, BYTE *pBuf, WORD ucBufLen)
         wIndex += ucWriteCount; // next word address
         pBuf += ucWriteCount; // next buffer pointer
 
-       // Delay1ms(1);
-		Delay1ms(12); //jxd
+        // Delay1ms(1);
+        Delay1ms(12); //jxd
     } // while
 
 }
 #if 1
 void NVRam_WriteByte(WORD addr, BYTE value)
 {
-	rmBurstWriteBytes(addr, &value, 1);
+    rmBurstWriteBytes(addr, &value, 1);
 }
 void NVRam_ReadByte(WORD addr, BYTE *value)
 {
-	rmBurstReadBytes(addr, value, 1);
+    rmBurstReadBytes(addr, value, 1);
 }
 void NVRam_WriteTbl(WORD addr, BYTE *buffer, WORD count)
 {
- 	rmBurstWriteBytes(addr, buffer, count);
+    rmBurstWriteBytes(addr, buffer, count);
 }
 void NVRam_ReadTbl(WORD addr, BYTE *buffer, WORD count)
 {
-	rmBurstReadBytes(addr, buffer, count);
+    rmBurstReadBytes(addr, buffer, count);
 }
 
 #endif
 
-void FLASH_Update (WORD dest, BYTE *src, unsigned int numbytes) 
+void FLASH_Update (WORD dest, BYTE *src, unsigned int numbytes)
 {
-	NVRam_WriteTbl(dest, src, numbytes);
-}  
-char * FLASH_Read (BYTE *dest, WORD  src, unsigned int numbytes)
+    NVRam_WriteTbl(dest, src, numbytes);
+}
+char *FLASH_Read (BYTE *dest, WORD  src, unsigned int numbytes)
 {
 
-	NVRam_ReadTbl(src, dest, numbytes)	;
-	return 1;
+    NVRam_ReadTbl(src, dest, numbytes)	;
+    return 1;
 
 }
 #endif

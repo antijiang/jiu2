@@ -1,7 +1,7 @@
 #ifdef _GLOBAL_C_
-  #define _GLOBALDEC_
+#define _GLOBALDEC_
 #else
-  #define _GLOBALDEC_ extern
+#define _GLOBALDEC_ extern
 #endif
 _GLOBALDEC_ XDATA BYTE ucUartCheckTick;
 _GLOBALDEC_ XDATA UartCommadType g_UartCommand; // Uart command struct
@@ -83,13 +83,13 @@ typedef enum _UartCommadEnumType
     _UART_CMD_INDEX16_,
 
     _UART_CMD_LENGTH_
-}UartCommadEnumType;
+} UartCommadEnumType;
 
 typedef struct _UartCommadType
 {
     BYTE Buffer[_UART_CMD_LENGTH_];  // command buffer
-                                     // [Length+Command] - [Byte 2] - [Byte 3] - [Byte 4] - [Byte 5]
+    // [Length+Command] - [Byte 2] - [Byte 3] - [Byte 4] - [Byte 5]
     BYTE Index;                     // buffer index
 
-}UartCommadType;
+} UartCommadType;
 

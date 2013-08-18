@@ -35,7 +35,7 @@
 void          FLASH_ByteWrite (FLADDR addr, char byte);
 unsigned char FLASH_ByteRead  (FLADDR addr);
 void          FLASH_PageErase (FLADDR addr);
-BYTE code     DUMY1[FLASH_IC_RESEVERD] _at_	 (FLASH_SIZE-FLASH_IC_RESEVERD);  //最后的空间被芯片系统保留
+BYTE code     DUMY1[FLASH_IC_RESEVERD] _at_	 (FLASH_SIZE - FLASH_IC_RESEVERD); //最后的空间被芯片系统保留
 
 BYTE code     EEPROM_TMP[FLASH_PAGESIZE] _at_	FLASH_TEMP ; //空间用作交换	 ，需要保留
 BYTE code     EEPROM_ENU[EEPROM_SIZE]     _at_	EEPROM_ADDR_START ; //空间用作eeprom ，需要保留
@@ -56,30 +56,30 @@ BYTE code     EEPROM_ENU[EEPROM_SIZE]     _at_	EEPROM_ADDR_START ; //空间用作eep
 
 void FLASH_ByteWrite (FLADDR addr, char byte)
 {
-   bit EA_SAVE = EA;                   // Preserve EA
-   char xdata * data pwrite;           // FLASH write pointer
+    bit EA_SAVE = EA;                   // Preserve EA
+    char xdata *data pwrite;            // FLASH write pointer
 
-   EA = 0;                             // Disable interrupts
+    EA = 0;                             // Disable interrupts
 
-   VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
+    VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
 
-   RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
+    RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
 
-   pwrite = (char xdata *) addr;
+    pwrite = (char xdata *) addr;
 
-   FLKEY  = 0xA5;                      // Key Sequence 1
-   FLKEY  = 0xF1;                      // Key Sequence 2
-   PSCTL |= 0x01;                      // PSWE = 1 which enables writes
+    FLKEY  = 0xA5;                      // Key Sequence 1
+    FLKEY  = 0xF1;                      // Key Sequence 2
+    PSCTL |= 0x01;                      // PSWE = 1 which enables writes
 
-   VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
+    VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
 
-   RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
+    RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
 
-   *pwrite = byte;                     // Write the byte
+    *pwrite = byte;                     // Write the byte
 
-   PSCTL &= ~0x01;                     // PSWE = 0 which disable writes
+    PSCTL &= ~0x01;                     // PSWE = 0 which disable writes
 
-   EA = EA_SAVE;                       // Restore interrupts
+    EA = EA_SAVE;                       // Restore interrupts
 }
 
 //-----------------------------------------------------------------------------
@@ -98,19 +98,19 @@ void FLASH_ByteWrite (FLADDR addr, char byte)
 
 unsigned char FLASH_ByteRead (FLADDR addr)
 {
-   bit EA_SAVE = EA;                   // Preserve EA
-   char code * data pread;             // FLASH read pointer
-   unsigned char byte;
+    bit EA_SAVE = EA;                   // Preserve EA
+    char code *data pread;              // FLASH read pointer
+    unsigned char byte;
 
-   EA = 0;                             // Disable interrupts
+    EA = 0;                             // Disable interrupts
 
-   pread = (char code *) addr;
+    pread = (char code *) addr;
 
-   byte = *pread;                      // Read the byte
+    byte = *pread;                      // Read the byte
 
-   EA = EA_SAVE;                       // Restore interrupts
+    EA = EA_SAVE;                       // Restore interrupts
 
-   return byte;
+    return byte;
 }
 
 //-----------------------------------------------------------------------------
@@ -131,30 +131,30 @@ unsigned char FLASH_ByteRead (FLADDR addr)
 
 void FLASH_PageErase (FLADDR addr)
 {
-   bit EA_SAVE = EA;                   // Preserve EA
-   char xdata * data pwrite;           // FLASH write pointer
+    bit EA_SAVE = EA;                   // Preserve EA
+    char xdata *data pwrite;            // FLASH write pointer
 
-   EA = 0;                             // Disable interrupts
+    EA = 0;                             // Disable interrupts
 
-   VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
+    VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
 
-   RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
+    RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
 
-   pwrite = (char xdata *) addr;
+    pwrite = (char xdata *) addr;
 
-   FLKEY  = 0xA5;                      // Key Sequence 1
-   FLKEY  = 0xF1;                      // Key Sequence 2
-   PSCTL |= 0x03;                      // PSWE = 1; PSEE = 1
+    FLKEY  = 0xA5;                      // Key Sequence 1
+    FLKEY  = 0xF1;                      // Key Sequence 2
+    PSCTL |= 0x03;                      // PSWE = 1; PSEE = 1
 
 
-   VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
+    VDM0CN = 0xA0;                      // Enable VDD monitor and high threshold
 
-   RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
-   *pwrite = 0;                        // Initiate page erase
+    RSTSRC = 0x02;                      // Enable VDD monitor as a reset source
+    *pwrite = 0;                        // Initiate page erase
 
-   PSCTL &= ~0x03;                     // PSWE = 0; PSEE = 0
+    PSCTL &= ~0x03;                     // PSWE = 0; PSEE = 0
 
-   EA = EA_SAVE;                       // Restore interrupts
+    EA = EA_SAVE;                       // Restore interrupts
 }
 
 //-----------------------------------------------------------------------------

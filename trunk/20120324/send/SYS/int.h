@@ -7,27 +7,27 @@
 #define	PCA_FOR_IR
 #define     IR_NEC
 //#define CODE_CONTINUE
-//#define CHECK_IR_CUSTOMER_CODE 
+//#define CHECK_IR_CUSTOMER_CODE
 //if you want to check customer code
 // Your customer definition is in "CUSTOMER_CODE"
 
 #define	SYSTEMTM_COUNT_BASE	10		//系统基准计时 单位N ms
 
 #if	defined	_INTC_
-#define	EXTERN_INTC	
+#define	EXTERN_INTC
 #else
 #define	EXTERN_INTC	extern
 #endif
 typedef struct _IR_RECEIVE
-{   
-   		BYTE stateIR	 ;
-    	BYTE User_Code	 ;
-	 	BYTE User_Code1;
-	  	BYTE IR_code	 ;
-	  	BYTE gbCodeKeep;
-      	BYTE 	REMOTE_CF;
-	  	BYTE RemoteCTM;
-}IR_RECEIVE; 
+{
+    BYTE stateIR	 ;
+    BYTE User_Code	 ;
+    BYTE User_Code1;
+    BYTE IR_code	 ;
+    BYTE gbCodeKeep;
+    BYTE 	REMOTE_CF;
+    BYTE RemoteCTM;
+} IR_RECEIVE;
 
 EXTERN_INTC BYTE data  stateIR;
 EXTERN_INTC BYTE idata User_Code;	/*the custom code*/

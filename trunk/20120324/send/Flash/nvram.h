@@ -2,7 +2,7 @@
 #ifndef _NVRAM_H_
 #define _NVRAM_H_
 
-		   //-----------EEprom Define-------------------
+//-----------EEprom Define-------------------
 #define RM_TYPE_24C01			0
 #define RM_TYPE_24C02			1
 #define RM_TYPE_24C04			2
@@ -36,9 +36,9 @@
 
 
 #ifdef _NVRAM_C_
-   #define _NVRAMDEC_
-#else  
-  #define _NVRAMDEC_ extern
+#define _NVRAMDEC_
+#else
+#define _NVRAMDEC_ extern
 #endif
 
 _NVRAMDEC_ void NVRam_WriteByte(WORD addr, BYTE value);
@@ -47,7 +47,7 @@ _NVRAMDEC_ void rmBurstWriteBytes(WORD wIndex, BYTE *pBuf, WORD ucBufLen);
 _NVRAMDEC_ void NVRam_WriteTbl(WORD addr, BYTE *buffer, WORD count);
 _NVRAMDEC_ void NVRam_ReadTbl(WORD addr, BYTE *buffer, WORD count);
 void FLASH_Update (WORD dest, BYTE *src, unsigned int numbytes) ;
-char * FLASH_Read (BYTE *dest, WORD  src, unsigned int numbytes);
+char *FLASH_Read (BYTE *dest, WORD  src, unsigned int numbytes);
 
 
 #endif

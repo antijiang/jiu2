@@ -34,7 +34,7 @@
 
 // FLASH read/write/erase routines
 void FLASH_Write (FLADDR dest, char *src, unsigned int numbytes);
-char * FLASH_Read (char *dest, FLADDR src, unsigned int numbytes);
+char *FLASH_Read (char *dest, FLADDR src, unsigned int numbytes);
 void FLASH_Clear (FLADDR addr, unsigned int numbytes);
 
 // FLASH update/copy routines
@@ -58,109 +58,110 @@ void FLASH_Fill (FLADDR addr, ULONG length, UCHAR fill);
 //
 // This routine erases <numbytes> starting from the FLASH addressed by
 // <dest> by performing a read-modify-write operation using <FLASH_TEMP> as
-// a temporary holding area. 
+// a temporary holding area.
 // <addr> + <numbytes> must be less than 0x79FF/0x3BFF.
 //
 //-----------------------------------------------------------------------------
 
 void FLASH_Clear (FLADDR dest, unsigned int numbytes)
 {
-   FLADDR dest_1_page_start;           // First address in 1st page
-                                       // containing <dest>
-   FLADDR dest_1_page_end;             // Last address in 1st page
-                                       // containing <dest>
-   FLADDR dest_2_page_start;           // First address in 2nd page
-                                       // containing <dest>
-   FLADDR dest_2_page_end;             // Last address in 2nd page
-                                       // containing <dest>
-   unsigned numbytes_remainder;        // When crossing page boundary,
-                                       // number of <src> bytes on 2nd page
-   unsigned FLASH_pagesize;            // Size of FLASH page to update
+    FLADDR dest_1_page_start;           // First address in 1st page
+    // containing <dest>
+    FLADDR dest_1_page_end;             // Last address in 1st page
+    // containing <dest>
+    FLADDR dest_2_page_start;           // First address in 2nd page
+    // containing <dest>
+    FLADDR dest_2_page_end;             // Last address in 2nd page
+    // containing <dest>
+    unsigned numbytes_remainder;        // When crossing page boundary,
+    // number of <src> bytes on 2nd page
+    unsigned FLASH_pagesize;            // Size of FLASH page to update
 
-   FLADDR  wptr;                       // Write address
-   FLADDR  rptr;                       // Read address
+    FLADDR  wptr;                       // Write address
+    FLADDR  rptr;                       // Read address
 
-   unsigned length;
+    unsigned length;
 
-   FLASH_pagesize = FLASH_PAGESIZE;
+    FLASH_pagesize = FLASH_PAGESIZE;
 
-   dest_1_page_start = dest & ~(FLASH_pagesize - 1);
-   dest_1_page_end   = dest_1_page_start + FLASH_pagesize - 1;
-   dest_2_page_start = (dest + numbytes)  & ~(FLASH_pagesize - 1);
-   dest_2_page_end   = dest_2_page_start + FLASH_pagesize - 1;
+    dest_1_page_start = dest & ~(FLASH_pagesize - 1);
+    dest_1_page_end   = dest_1_page_start + FLASH_pagesize - 1;
+    dest_2_page_start = (dest + numbytes)  & ~(FLASH_pagesize - 1);
+    dest_2_page_end   = dest_2_page_start + FLASH_pagesize - 1;
 
-   if (dest_1_page_end == dest_2_page_end) //<256×Ö½Ú
-   {
-      // 1. Erase Scratch page
-      FLASH_PageErase (FLASH_TEMP);//É¾³ý7a00-7bff
+    if (dest_1_page_end == dest_2_page_end) //<256×Ö½Ú
+    {
+        // 1. Erase Scratch page
+        FLASH_PageErase (FLASH_TEMP);//É¾³ý7a00-7bff
 
-      // 2. Copy bytes from first byte of dest page to dest-1 to Scratch page
+        // 2. Copy bytes from first byte of dest page to dest-1 to Scratch page
 
-      wptr = FLASH_TEMP;		//¡\|--s---|--e------|
-      rptr = dest_1_page_start;
-      length = dest - dest_1_page_start;
-      FLASH_Copy (wptr, rptr, length);
+        wptr = FLASH_TEMP;		//¡\|--s---|--e------|
+        rptr = dest_1_page_start;
+        length = dest - dest_1_page_start;
+        FLASH_Copy (wptr, rptr, length);
 
-      // 3. Copy from (dest+numbytes) to dest_page_end to Scratch page
+        // 3. Copy from (dest+numbytes) to dest_page_end to Scratch page
 
-      wptr = FLASH_TEMP + dest - dest_1_page_start + numbytes;
-      rptr = dest + numbytes;
-      length = dest_1_page_end - dest - numbytes + 1;
-      FLASH_Copy (wptr, rptr, length);
+        wptr = FLASH_TEMP + dest - dest_1_page_start + numbytes;
+        rptr = dest + numbytes;
+        length = dest_1_page_end - dest - numbytes + 1;
+        FLASH_Copy (wptr, rptr, length);
 
-      // 4. Erase destination page
-      FLASH_PageErase (dest_1_page_start);
+        // 4. Erase destination page
+        FLASH_PageErase (dest_1_page_start);
 
-      // 5. Copy Scratch page to destination page
-      wptr = dest_1_page_start;
-      rptr = FLASH_TEMP;
-      length = FLASH_pagesize;
-      FLASH_Copy (wptr, rptr, length);
+        // 5. Copy Scratch page to destination page
+        wptr = dest_1_page_start;
+        rptr = FLASH_TEMP;
+        length = FLASH_pagesize;
+        FLASH_Copy (wptr, rptr, length);
 
-   } 
-   else 
-   {                            // value crosses page boundary
-      // 1. Erase Scratch page
-      FLASH_PageErase (FLASH_TEMP);
+    }
+    else
+    {
+        // value crosses page boundary
+        // 1. Erase Scratch page
+        FLASH_PageErase (FLASH_TEMP);
 
-      // 2. Copy bytes from first byte of dest page to dest-1 to temp page
+        // 2. Copy bytes from first byte of dest page to dest-1 to temp page
 
-      wptr = FLASH_TEMP;
-      rptr = dest_1_page_start;
-      length = dest - dest_1_page_start;
-      FLASH_Copy (wptr, rptr, length);
+        wptr = FLASH_TEMP;
+        rptr = dest_1_page_start;
+        length = dest - dest_1_page_start;
+        FLASH_Copy (wptr, rptr, length);
 
-      // 3. Erase destination page 1
-      FLASH_PageErase (dest_1_page_start);
+        // 3. Erase destination page 1
+        FLASH_PageErase (dest_1_page_start);
 
-      // 4. Copy Scratch page to destination page 1
-      wptr = dest_1_page_start;
-      rptr = FLASH_TEMP;
-      length = FLASH_pagesize;
-      FLASH_Copy (wptr, rptr, length);
+        // 4. Copy Scratch page to destination page 1
+        wptr = dest_1_page_start;
+        rptr = FLASH_TEMP;
+        length = FLASH_pagesize;
+        FLASH_Copy (wptr, rptr, length);
 
-      // Now handle 2nd page
+        // Now handle 2nd page
 
-      // 5. Erase Scratch page
-      FLASH_PageErase (FLASH_TEMP);
+        // 5. Erase Scratch page
+        FLASH_PageErase (FLASH_TEMP);
 
-      // 6. Copy bytes from numbytes remaining to dest-2_page_end to temp page
+        // 6. Copy bytes from numbytes remaining to dest-2_page_end to temp page
 
-      numbytes_remainder = numbytes - (dest_1_page_end - dest + 1);
-      wptr = FLASH_TEMP + numbytes_remainder;
-      rptr = dest_2_page_start + numbytes_remainder;
-      length = FLASH_pagesize - numbytes_remainder;
-      FLASH_Copy (wptr, rptr, length);
+        numbytes_remainder = numbytes - (dest_1_page_end - dest + 1);
+        wptr = FLASH_TEMP + numbytes_remainder;
+        rptr = dest_2_page_start + numbytes_remainder;
+        length = FLASH_pagesize - numbytes_remainder;
+        FLASH_Copy (wptr, rptr, length);
 
-      // 7. Erase destination page 2
-      FLASH_PageErase (dest_2_page_start);
+        // 7. Erase destination page 2
+        FLASH_PageErase (dest_2_page_start);
 
-      // 8. Copy Scratch page to destination page 2
-      wptr = dest_2_page_start;
-      rptr = FLASH_TEMP;
-      length = FLASH_pagesize;
-      FLASH_Copy (wptr, rptr, length);
-   }
+        // 8. Copy Scratch page to destination page 2
+        wptr = dest_2_page_start;
+        rptr = FLASH_TEMP;
+        length = FLASH_pagesize;
+        FLASH_Copy (wptr, rptr, length);
+    }
 }
 
 //-----------------------------------------------------------------------------
@@ -177,8 +178,8 @@ void FLASH_Clear (FLADDR dest, unsigned int numbytes)
 //                              valid range is 0 to FLASH_PAGESIZE
 //
 // This routine replaces <numbytes> from <src> to the FLASH addressed by
-// <dest>.  This function calls FLASH_Clear() to initialize all <dest> bytes 
-// to 0xff's prior to copying the bytes from <src> to <dest>.  
+// <dest>.  This function calls FLASH_Clear() to initialize all <dest> bytes
+// to 0xff's prior to copying the bytes from <src> to <dest>.
 // <dest> + <numbytes> must be less than 0x7DFF/0x3FFF.
 //
 //-----------------------------------------------------------------------------
@@ -186,35 +187,37 @@ void FLASH_Clear (FLADDR dest, unsigned int numbytes)
 
 void FLASH_Update (FLADDR dest, char *src, unsigned int numbytes)
 {
-	 int numbytestmp=numbytes;
-//  Pause_Measure();
-	do{		
-			if(numbytestmp>FLASH_PAGESIZE)numbytes=FLASH_PAGESIZE;
-			else numbytes=numbytestmp;
-		   // 1. Erase <numbytes> starting from <dest>
-		   FLASH_Clear (dest, numbytes);
+    int numbytestmp = numbytes;
+    //  Pause_Measure();
+    do
+    {
+        if(numbytestmp > FLASH_PAGESIZE)numbytes = FLASH_PAGESIZE;
+        else numbytes = numbytestmp;
+        // 1. Erase <numbytes> starting from <dest>
+        FLASH_Clear (dest, numbytes);
 
-		   // 2. Write <numbytes> from <src> to <dest>
-		   FLASH_Write (dest, src, numbytes);
-		   numbytestmp=numbytestmp-FLASH_PAGESIZE;
-		   dest=dest+FLASH_PAGESIZE;
-		   src=src+FLASH_PAGESIZE;
-		}while(numbytestmp>0);
-//   Restart_Measure() ;
+        // 2. Write <numbytes> from <src> to <dest>
+        FLASH_Write (dest, src, numbytes);
+        numbytestmp = numbytestmp - FLASH_PAGESIZE;
+        dest = dest + FLASH_PAGESIZE;
+        src = src + FLASH_PAGESIZE;
+    }
+    while(numbytestmp > 0);
+    //   Restart_Measure() ;
 
-	
+
 }
 #else
 void FLASH_Update (FLADDR dest, char *src, unsigned int numbytes)
 {
-//  Pause_Measure();
-					
-   // 1. Erase <numbytes> starting from <dest>
-   FLASH_Clear (dest, numbytes);
+    //  Pause_Measure();
 
-   // 2. Write <numbytes> from <src> to <dest>
-   FLASH_Write (dest, src, numbytes);
-//   Restart_Measure() ;
+    // 1. Erase <numbytes> starting from <dest>
+    FLASH_Clear (dest, numbytes);
+
+    // 2. Write <numbytes> from <src> to <dest>
+    FLASH_Write (dest, src, numbytes);
+    //   Restart_Measure() ;
 }
 
 #endif
@@ -239,11 +242,12 @@ void FLASH_Update (FLADDR dest, char *src, unsigned int numbytes)
 
 void FLASH_Write (FLADDR dest, char *src, unsigned int numbytes)
 {
-   FLADDR i;
+    FLADDR i;
 
-   for (i = dest; i < dest+numbytes; i++) {
-      FLASH_ByteWrite (i, *src++);
-   }
+    for (i = dest; i < dest + numbytes; i++)
+    {
+        FLASH_ByteWrite (i, *src++);
+    }
 }
 
 //-----------------------------------------------------------------------------
@@ -261,20 +265,21 @@ void FLASH_Write (FLADDR dest, char *src, unsigned int numbytes)
 //                              valid range is range of integer
 //
 // This routine copies <numbytes> from the linear FLASH address <src> to
-// <dest>. 
+// <dest>.
 // <src> + <numbytes> must be less than 0x7DFF/0x3FFF.
 //
 //-----------------------------------------------------------------------------
 
-char * FLASH_Read (char *dest, FLADDR src, unsigned int numbytes)
+char *FLASH_Read (char *dest, FLADDR src, unsigned int numbytes)
 {
-   FLADDR i;
-//   Pause_Measure() ;
-   for (i = 0; i < numbytes; i++) {
-      *dest++ = FLASH_ByteRead (src+i);
-   }
-//   Restart_Measure() ;
-   return dest;
+    FLADDR i;
+    //   Pause_Measure() ;
+    for (i = 0; i < numbytes; i++)
+    {
+        *dest++ = FLASH_ByteRead (src + i);
+    }
+    //   Restart_Measure() ;
+    return dest;
 
 }
 
@@ -301,11 +306,12 @@ char * FLASH_Read (char *dest, FLADDR src, unsigned int numbytes)
 
 void FLASH_Copy (FLADDR dest, FLADDR src, unsigned int numbytes)
 {
-   FLADDR i;
+    FLADDR i;
 
-   for (i = 0; i < numbytes; i++) {
-      FLASH_ByteWrite ((FLADDR) dest+i, FLASH_ByteRead((FLADDR) src+i));
-   }
+    for (i = 0; i < numbytes; i++)
+    {
+        FLASH_ByteWrite ((FLADDR) dest + i, FLASH_ByteRead((FLADDR) src + i));
+    }
 }
 
 //-----------------------------------------------------------------------------
@@ -329,11 +335,12 @@ void FLASH_Copy (FLADDR dest, FLADDR src, unsigned int numbytes)
 
 void FLASH_Fill (FLADDR addr, ULONG length, UCHAR fill)
 {
-   FLADDR i;
+    FLADDR i;
 
-   for (i = 0; i < length; i++) {
-      FLASH_ByteWrite (addr+i, fill);
-   }
+    for (i = 0; i < length; i++)
+    {
+        FLASH_ByteWrite (addr + i, fill);
+    }
 }
 
 //-----------------------------------------------------------------------------

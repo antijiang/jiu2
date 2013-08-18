@@ -1,19 +1,19 @@
 
-#define	INIT_UART_RECBUF g_UartCommand.Index=0		
+#define	INIT_UART_RECBUF g_UartCommand.Index=0
 /******/
-//2 seconde time out			
+//2 seconde time out
 void UartRecTimeOutCheck (void)
-{			
- 				if (ucUartCheckTick)
-                if ((--ucUartCheckTick)==0)
-                    g_UartCommand.Index = 0;	
-}										
+{
+    if (ucUartCheckTick)
+        if ((--ucUartCheckTick) == 0)
+            g_UartCommand.Index = 0;
+}
 ///////////////////////////////////////
 // Uart Interrupt
 ///////////////////////////////////////
 void uartInterrupt(void) interrupt 4
 {
-//    EA = 0; // disable all interrupt
+    //    EA = 0; // disable all interrupt
 #if _DEBUG_EXTDEV_EN_
     if (!_testbit_(TI)) // check translate interrupt
     {
@@ -34,7 +34,7 @@ void uartInterrupt(void) interrupt 4
                     g_UartCommand.Index++; // next index of command buffer
                 if (g_UartCommand.Index >= UART_CMD_EXT_LENGTH) // read command ok
                 {
-                xx
+                    xx
                     g_bUartDetected = TRUE; // command  buffer recieve ok
                     g_UartCommand.Index = 0; // reset index of command buffer
                     ucUartCheckTick = 0;
@@ -53,6 +53,6 @@ void uartInterrupt(void) interrupt 4
             }
         }
     } // if TI
-#endif		
-//    EA = 1; // release EA bit
+#endif
+    //    EA = 1; // release EA bit
 }

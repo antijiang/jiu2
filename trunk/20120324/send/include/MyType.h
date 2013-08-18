@@ -109,12 +109,12 @@ typedef void              *PVOID;
 
 typedef union _HiLo
 {
-	struct _b_
-	{
-		
-	 	BYTE h;
-		BYTE l;
-	}b;
+    struct _b_
+    {
+
+        BYTE h;
+        BYTE l;
+    } b;
     BYTE bte[2];
     WORD w;
 } HLdata;
@@ -123,14 +123,14 @@ typedef union _WB3data
 {
 
     BYTE bte[3];
-	struct _b
-	{
-		
-	 	WORD w;
-		BYTE b;
-		
-	}b;
-    
+    struct _b
+    {
+
+        WORD w;
+        BYTE b;
+
+    } b;
+
 
 } WB3data;
 typedef union _HiLoDW
@@ -182,14 +182,15 @@ typedef union _HiLoDW
 
 
 
-typedef struct   { 
-	
-	BYTE Time_1_hour;
-	BYTE Time_1_min;
-	BYTE Time_1_sec;
-	BYTE Time_1_20msec;
-	
-	
-	
-}data_time ;
+typedef struct
+{
+
+    BYTE Time_1_hour;
+    BYTE Time_1_min;
+    BYTE Time_1_sec;
+    BYTE Time_1_20msec;
+
+
+
+} data_time ;
 #endif
