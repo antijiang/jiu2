@@ -1,6 +1,6 @@
 /******************************************************************
 
-*******************************************************************/
+ *******************************************************************/
 
 #ifndef __CONFIG_H__
 #define __CONFIG_H__
@@ -34,9 +34,8 @@
 #else
 //#define		SensorPowerOn()  	TEST_SPI(CMD_SET_P00)
 //#define		SensorPowerOff()  TEST_SPI(CMD_CLR_P00)
-#define		SensorPowerOn()  	SetPWM(02,0xff)
-#define		SensorPowerOff()  SetPWM(02,00)
-
+#define		SensorPowerOn()  	{SetPWM(02,0xff);TEST_SPI(CMD_SET_P00);}
+#define		SensorPowerOff()  {SetPWM(02,00);TEST_SPI(CMD_CLR_P00);}
 
 #endif
 #ifndef	  SECURE_SPI
@@ -47,7 +46,6 @@
 #define	   SensorHeatPowerOff()
 #endif
 #define	SensorStart100HZ()
-
 
 #define STANDARD_REF_VOLT	3000	   //系统输出标准参考电压
 #define	DEFAULT_NOCOAL_VA	1580		   //无酒精
@@ -76,7 +74,6 @@
 #define	LEDIO	P05
 #define	LED_RED(x)
 #define	LED_GREEN(x)	//SetPWM(02,x)
-
 #define	BUZZY_ON()		{SetPWM(00,0xff);BZY_on=1;}
 #define	BUZZY_OFF()		{SetPWM(00,0x00);BZY_on=0;}
 
@@ -84,18 +81,14 @@
 #define	LCDBAK_OFF		0
 #define	LCDBAKLIGHT(x)	SetPWM(1,x)
 
-
 #define	SW_DETECT()		P13
 
 //p15
 #define	PIO_ADJUST_DET	 	P15  //检测  酒精校准50mg  复用无线发送脚
 #define	PIO_CFG_DET	 		0x20    //1<<5
-
 //p00
 #define	PIO_ADJUST_DET20	 	P00  //20mg calibrate
 #define	PIO_CFG_DET20	 		0x01    //1<<5
-
-
 //不定义为直流 郑州
 //#define  FANGBO_PWR    //戴维来方波 定义
 
@@ -104,11 +97,9 @@
 #define	P_LCD_OFF		1
 
 #define	PO_LCD_POWER(x)		P17=x		 //lcd电源
-
 #define	PIO_CHARG			P20
 #define	PCHARG_DET()		(P20==1)		  //5V充电电源检测
 #define	PCHARG_FULL()		(P05==1)		  //
-
 #define	PWR_G1		P04
 #define	PWR_G2		P01
 

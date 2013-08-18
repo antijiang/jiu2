@@ -298,10 +298,8 @@ BYTE ScanKey(void)
 
 #define StepUpSound()
 #define StepDownSound()
-extern void
-Oscillator_LowCost();
-extern void
-Oscillator_HiCost();
+extern void Oscillator_LowCost();
+extern void Oscillator_HiCost();
 void GoSleep()
 {
 	BYTE IEx, IEy;
@@ -317,8 +315,7 @@ void GoSleep()
 	PO_LCD_POWER(P_LCD_OFF);
 	LCDBAKLIGHT(LCDBAK_OFF);
 	{
-		extern void
-		LCD_Sleep(void);
+		extern void LCD_Sleep(void);
 
 		LCD_Sleep();
 
@@ -771,10 +768,8 @@ void calALO()
 	Display_All();
 }
 
-void
-QishuDetect();
-void
-Qishu_EN();
+void QishuDetect();
+void Qishu_EN();
 //主程序5ms循环调用
 //每100ms内只要检测到一次，就有效，连续1秒
 BYTE qistate_EN = 0;
@@ -1052,6 +1047,12 @@ void TestACHOL()
 		SensorHeatPowerOn(); //100KZ
 		if (CountHeat != 0) //仍处等待时间
 		{
+			tempv = CountHeat;
+			HexToBCD((WORD *) &tempv, (BYTE *) &DisBuffer);
+			DisBuffer[1] = CHAR_BLK;
+			DisBuffer[0] = CHAR_b;
+			DisplayCont = DISPLAY_NUM;
+			Display_All();
 
 			if (qishu > (MIN_QISHU))
 			{
@@ -1060,10 +1061,10 @@ void TestACHOL()
 				DelayXms(200);
 				BUZZY_OFF();
 				StateSensor += 1; //直接去测量
+				DisplayCont = DISPLAY_TIME_SEC;
 #ifdef	FANGBO_PWR
 				CountHeat = 4; //测量3秒最低值
 #else
-
 				CountHeat = 2; //zhiliu
 #endif
 			}
@@ -1110,7 +1111,6 @@ void TestACHOL()
 		if (CountHeat <= 4)
 #endif
 		{
-
 			//测量酒精电压
 			tempv = Force_MesureADport(ADPORT_SENSOR);
 			VC = min( tempv, VC);
@@ -1120,7 +1120,6 @@ void TestACHOL()
 			{
 				DisplayCont = DISPLAY_VOLT;
 				Display_All();
-
 			}
 
 			else
@@ -1128,6 +1127,8 @@ void TestACHOL()
 #ifdef	DEBUG_VOL
 				DisplayCont = DISPLAY_VOLT;
 				Display_All();
+#else
+				DisplayCont = DISPLAY_TIME_SEC;
 #endif
 			}
 
@@ -1151,8 +1152,8 @@ void TestACHOL()
 			goto LABEL_CMP;
 		case 1:
 			Dtempv = (DWORD) VC + ((0.4 * 1000) * 1024 / STANDARD_REF_VOLT);
-			LABEL_CMP: if ((WORD) Dtempv > VB //标定130PPM 电压要低于 0点0.6 V以上，否则无效
-			)
+			LABEL_CMP: if ((WORD) Dtempv > VB)//标定130PPM 电压要低于 0点0.6 V以上，否则无效
+
 			{
 				DisplayCont = DISPLAY_ERR2;
 				StateSensor = AL_STATE_EXIT;
@@ -1175,8 +1176,7 @@ void TestACHOL()
 				}
 				LABLE_SAVE_SINFO:
 				{
-					extern WORD
-					CalChkSum(BYTE * p, BYTE len);
+					extern WORD CalChkSum(BYTE * p, BYTE len);
 					SysInfo.chksum
 							= CalChkSum((BYTE *) &SysInfo, EEP_SYS_LENTH);
 				}
@@ -1229,8 +1229,7 @@ void TestACHOL()
 			GoSleep();
 			//初始程序必须放在开中断后，延时程序使用了中断定时
 			{
-				extern void
-				Init_LCD(void);
+				extern void Init_LCD(void);
 				Init_LCD();
 			}
 
@@ -1383,12 +1382,14 @@ void DO_Key_Action()
 			{
 				AdjustSensor = 1;
 				SysInfo.ADJUST &= ~0x50;
+				DisplayCont = DISPLAY_ADJ;
 				goto LABEL_ADJUST_ALO;
 			}
 			else if (PI_ADJUST_DET20())
 			{
 				AdjustSensor = 2;
 				SysInfo.ADJUST &= ~0x05;
+				DisplayCont = DISPLAY_ADJ20;
 				goto LABEL_ADJUST_ALO;
 			}
 
@@ -1399,15 +1400,14 @@ void DO_Key_Action()
 		goto LABEL_TEST_ALO;
 		break;
 	case KEY_ADJUST:
-		LABEL_ADJUST_ALO: DisplayCont = DISPLAY_ADJ;
+		LABEL_ADJUST_ALO: //DisplayCont = DISPLAY_ADJ;
 		LABEL_TEST_ALO: Display_All();
 		MeasurePS();
 		break;
 
 	case KEY_DISPSTD:
 	{
-		extern void
-		diaplay_std();
+		extern void diaplay_std();
 		diaplay_std();
 	}
 		break;
