@@ -115,9 +115,10 @@
         <tRmem>1</tRmem>
         <tRfunc>0</tRfunc>
         <tRbox>1</tRbox>
+        <tRtrace>0</tRtrace>
         <sRunDeb>0</sRunDeb>
         <sLrtime>0</sLrtime>
-        <nTsel>-1</nTsel>
+        <nTsel>9</nTsel>
         <sDll></sDll>
         <sDllPa></sDllPa>
         <sDlgDll></sDlgDll>
@@ -134,7 +135,7 @@
         <SetRegEntry>
           <Number>0</Number>
           <Key>DLGTCYG</Key>
-          <Name>(98=794,276,1162,566,0)(5097=225,189,569,566,0)(5098=55,271,286,436,0)(5099=806,239,1037,404,0)(3007=434,255,667,367,0)(99=-1,-1,-1,-1,0)(91=150,107,350,404,0)(92=-1,-1,-1,-1,0)(5104=-1,-1,-1,-1,0)(5103=1055,535,1280,752,0)(95=0,159,236,357,0)(100=0,258,290,540,0)(5108=-1,-1,-1,-1,0)(5111=-1,-1,-1,-1,0)(5105=180,124,530,466,0)(5107=-1,-1,-1,-1,0)(5106=-1,-1,-1,-1,0)(5061=-1,-1,-1,-1,0)(5102=735,218,1004,768,0)(5095=-1,-1,-1,-1,0)</Name>
+          <Name>(98=794,276,1162,566,0)(5097=225,189,569,562,0)(5098=55,271,286,432,0)(5099=806,239,1037,404,0)(3007=434,255,667,367,0)(99=-1,-1,-1,-1,0)(91=150,107,350,404,0)(92=-1,-1,-1,-1,0)(5104=-1,-1,-1,-1,0)(5103=1055,535,1280,752,0)(95=0,159,236,357,0)(100=0,258,290,540,0)(5108=-1,-1,-1,-1,0)(5111=-1,-1,-1,-1,0)(5105=180,124,530,466,0)(5107=-1,-1,-1,-1,0)(5106=-1,-1,-1,-1,0)(5061=-1,-1,-1,-1,0)(5102=735,218,1004,768,0)(5095=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
         <SetRegEntry>
           <Number>0</Number>
@@ -147,24 +148,7 @@
           <Name>(98=-1,-1,-1,-1,0)(5097=-1,-1,-1,-1,0)(5098=-1,-1,-1,-1,0)(5099=-1,-1,-1,-1,0)(3007=-1,-1,-1,-1,0)(99=-1,-1,-1,-1,0)(91=-1,-1,-1,-1,0)(92=-1,-1,-1,-1,0)(5104=-1,-1,-1,-1,0)(5103=-1,-1,-1,-1,0)(95=-1,-1,-1,-1,0)(100=-1,-1,-1,-1,0)(5108=-1,-1,-1,-1,0)(5105=-1,-1,-1,-1,0)(5107=-1,-1,-1,-1,0)(5106=-1,-1,-1,-1,0)(5061=-1,-1,-1,-1,0)(5102=-1,-1,-1,-1,0)(5095=-1,-1,-1,-1,0)</Name>
         </SetRegEntry>
       </TargetDriverDllRegistry>
-      <Breakpoint>
-        <Bp>
-          <Number>0</Number>
-          <Type>0</Type>
-          <LineNumber>1065</LineNumber>
-          <EnabledFlag>1</EnabledFlag>
-          <Address>-16774972</Address>
-          <ByteObject>0</ByteObject>
-          <HtxType>0</HtxType>
-          <ManyObjects>0</ManyObjects>
-          <SizeOfObject>0</SizeOfObject>
-          <BreakByAccess>0</BreakByAccess>
-          <BreakIfRCount>1</BreakIfRCount>
-          <Filename>app\KEY_SCAN.C</Filename>
-          <ExecCommand></ExecCommand>
-          <Expression></Expression>
-        </Bp>
-      </Breakpoint>
+      <Breakpoint/>
       <MemoryWindow1>
         <Mm>
           <WinNumber>1</WinNumber>
@@ -196,7 +180,7 @@
       <DebugFlag>
         <trace>0</trace>
         <periodic>1</periodic>
-        <aLwin>0</aLwin>
+        <aLwin>1</aLwin>
         <aCover>0</aCover>
         <aSer1>0</aSer1>
         <aSer2>0</aSer2>
@@ -219,6 +203,9 @@
         <newCpu>0</newCpu>
         <uProt>0</uProt>
       </DebugFlag>
+      <Tracepoint>
+        <THDelay>0</THDelay>
+      </Tracepoint>
       <LintExecutable></LintExecutable>
       <LintConfigFile></LintConfigFile>
     </TargetOption>
@@ -229,19 +216,22 @@
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>1</GroupNumber>
       <FileNumber>1</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1</TopLine>
+      <TopLine>169</TopLine>
       <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\app\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -250,6 +240,7 @@
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>2</GroupNumber>
       <FileNumber>2</FileNumber>
@@ -263,6 +254,8 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\RF\dali_drv.c</PathWithFileName>
       <FilenameWithoutPath>dali_drv.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
@@ -270,13 +263,15 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>31</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>899</TopLine>
-      <CurrentLine>911</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\app\key_scan.c</PathWithFileName>
       <FilenameWithoutPath>key_scan.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>2</GroupNumber>
@@ -286,11 +281,13 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>157</TopLine>
-      <CurrentLine>92</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\lcd_drv\lcd_drv.c</PathWithFileName>
       <FilenameWithoutPath>lcd_drv.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -299,19 +296,22 @@
     <tvExp>1</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>3</GroupNumber>
       <FileNumber>5</FileNumber>
       <FileType>1</FileType>
-      <tvExp>0</tvExp>
+      <tvExp>1</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>1</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>256</TopLine>
-      <CurrentLine>256</CurrentLine>
+      <TopLine>1</TopLine>
+      <CurrentLine>1</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>..\SYS\system.c</PathWithFileName>
       <FilenameWithoutPath>system.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -320,6 +320,7 @@
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>4</GroupNumber>
       <FileNumber>6</FileNumber>
@@ -333,6 +334,8 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\nvram.c</PathWithFileName>
       <FilenameWithoutPath>nvram.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
@@ -347,6 +350,8 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\i2c.c</PathWithFileName>
       <FilenameWithoutPath>i2c.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
@@ -361,6 +366,8 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\F410_FlashUtils.c</PathWithFileName>
       <FilenameWithoutPath>F410_FlashUtils.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>4</GroupNumber>
@@ -375,6 +382,8 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\Flash\F410_FlashPrimitives.c</PathWithFileName>
       <FilenameWithoutPath>F410_FlashPrimitives.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
   </Group>
 
@@ -383,6 +392,7 @@
     <tvExp>0</tvExp>
     <tvExpOptDlg>0</tvExpOptDlg>
     <cbSel>0</cbSel>
+    <RteFlg>0</RteFlg>
     <File>
       <GroupNumber>5</GroupNumber>
       <FileNumber>10</FileNumber>
@@ -396,6 +406,8 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\rec\其他平台主机控制程序\spicom_in.c</PathWithFileName>
       <FilenameWithoutPath>spicom_in.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
     <File>
       <GroupNumber>5</GroupNumber>
@@ -410,6 +422,8 @@
       <bDave2>0</bDave2>
       <PathWithFileName>..\..\rec\其他平台主机控制程序\spicom.c</PathWithFileName>
       <FilenameWithoutPath>spicom.c</FilenameWithoutPath>
+      <RteFlg>0</RteFlg>
+      <bShared>0</bShared>
     </File>
   </Group>
 
