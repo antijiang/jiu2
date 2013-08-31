@@ -3,11 +3,11 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-C:\Users\xd.jiang\Desktop\xx\jiujing\20120324\rec\project\rec.uvproj
-Project File Date:  07/24/2011
+F:\work2013\work\jiujing\trunk\jiu2\trunk\20120324\rec\project\rec.uvproj
+Project File Date:  08/16/2013
 
 <h2>Output:</h2>
-Rebuild Project 'rec' - Target 'rec'
+Build target 'rec'
 compiling main.c...
 compiling dali_drv.c...
 compiling key_scan.c...

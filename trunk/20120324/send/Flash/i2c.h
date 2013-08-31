@@ -18,7 +18,7 @@ typedef enum i2c_direction
 #define I2C_DEVICE_ADR_READ(slave_adr)    (slave_adr | _BIT0)
 #define I2C_ACCESS_DUMMY_TIME   		  10
 #define hwI2C_SCL_Pin				P12
-#define hwI2C_SDA_Pin				P11
+#define hwI2C_SDA_Pin				P06
 #define hwI2C_SCL_Pin_STATUS 		(hwI2C_SCL_Pin&0x01)
 #define hwI2C_SDA_Pin_STATUS 		(hwI2C_SDA_Pin&0x01)
 #define i2cSetSCL(is_hl)  	hwI2C_SCL_Pin=is_hl

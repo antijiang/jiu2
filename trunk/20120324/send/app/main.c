@@ -81,7 +81,7 @@ void Init_EPROM()
 	for (buf = 0; buf < MAX_JIULST; buf++)
 		Jiulist.Jvol[buf] = 0xffff;
 
-#ifndef NVRAM_USE_EEP24CXX
+
 	do
 	{
 		FLASH_Read(&buf, (FLADDR) EEPROM_ID, 1);
@@ -97,7 +97,7 @@ void Init_EPROM()
 	} while (retrycount--);
 
 	if (eepok)
-#endif
+
 	{
 		//read from flash
 
@@ -107,7 +107,7 @@ void Init_EPROM()
 				EEP_JIULST_LENTH);
 
 	}
-#ifndef NVRAM_USE_EEP24CXX
+
 	else
 	{
 		DisplayCont = DISPLAY_ERR0;
@@ -134,7 +134,7 @@ void Init_EPROM()
 		FLASH_Update((FLADDR) EEPROM_ID, (BYTE *) &buf, 1);
 
 	}
-#endif
+
 	//初始化变量
 	{
 		if (Jiulist.idx >= MAX_JIULST)
