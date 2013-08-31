@@ -158,6 +158,9 @@ void Init_LCD(void)
 	SET_STB();
 	BUZZY_OFF();
 
+	DisplayCont = DISPLAY_SLEEP;
+	Display_All();
+
 }
 void DispBuf2LcdBuf(void)
 {
@@ -282,15 +285,14 @@ void DispBAT()
 	LCD_buf[SEG_BAT3_ADDR] &= ~SEG_BAT3;
 	LCD_buf[SEG_BAT0_ADDR] |= SEG_BAT0; //外框
 #if 1
-	//	if(PCHARG_DET())  //2012.0402 硬件问题，
-	if (!PCHARG_FULL()) //低电平充电
+	if (PCHARG_DET()) //2012.0402 硬件问题，
 	{
-		//充电
 
+		//充电
 		LCD_buf[SEG_BAT1_ADDR] |= SEG_BAT1;
 		LCD_buf[SEG_BAT2_ADDR] |= SEG_BAT2;
 		LCD_buf[SEG_BAT2_ADDR] |= SEG_BAT3;
-		//	if(!PCHARG_FULL())
+		if (!PCHARG_FULL())//低电平充电
 		{
 			if (F_half_sec)
 			{
@@ -298,6 +300,7 @@ void DispBAT()
 			}
 
 		};
+
 	}
 	else
 	{

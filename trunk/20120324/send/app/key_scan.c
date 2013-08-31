@@ -40,7 +40,7 @@ BYTE TransCmd = FUN_LOCK_CAR;
 #ifdef  FANGBO_PWR
 #define	MIN_QISHU	8	   //检测到的最少吹气数
 #else
-#define	MIN_QISHU	((500+500)/100)	   //   时间 / (100ms内 测一次  检测到的最少吹气数
+#define	MIN_QISHU	((1500+500)/100)	   //   时间 / (100ms内 测一次  检测到的最少吹气数
 #endif
 
 BYTE CountHeat = 0;
@@ -62,12 +62,14 @@ BYTE PI_ADJUST_DET()
 {
 	BYTE reval;
 	PIO_ADJUST_DET = 1;
-	P1MDOUT &= ~PIO_CFG_DET; //p15 弱开路输出
+	//P1MDOUT &= ~PIO_CFG_DET; //p15 弱开路输出  ,单外部上啦不够
+	P1MDOUT |= PIO_CFG_DET; //p15 强拉
 	DelayXms(10);
 	if (PIO_ADJUST_DET == 0)
 		reval = 1;
 	else
 		reval = 0;
+	P1MDOUT &= ~PIO_CFG_DET;
 	return reval;
 
 }
@@ -373,7 +375,7 @@ WORD VA, VB, VC; //va :冷制最低电压 VB：吹气前电压  VC：出气后电压
 //4.0 3.9 3.8 3.7V  3.6
 // 满量程(3V)量化：      1024/3    *  56K/(56K+56K)  >>2  (转为字节
 //IO 2.5v
-#define	BATVREF	 ((BYTE) ((DWORD)1024/(STANDARD_REF_VOLT/1000)*56/(56+56) /4) )
+#define	BATVREF	 ((BYTE) ((DWORD)1024/(STANDARD_REF_VOLT/1000)*1/(1+1) /4) )
 #define	BATV1	(BYTE)((WORD)BATVREF*40/10)
 #define	BATV2	(BYTE)((WORD)BATVREF*39/10)
 #define	BATV3	(BYTE)((WORD)BATVREF*38/10)
@@ -1177,7 +1179,7 @@ void TestACHOL()
 				LABLE_SAVE_SINFO:
 				{
 					extern WORD CalChkSum(BYTE * p, BYTE len);
-					SysInfo.chksum
+					SysInfo.CSUM
 							= CalChkSum((BYTE *) &SysInfo, EEP_SYS_LENTH);
 				}
 				FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE *) &SysInfo,
@@ -1313,7 +1315,7 @@ void DO_Key_Action()
 		{
 			extern WORD
 			CalChkSum(BYTE * p, BYTE len);
-			SysInfo.chksum = CalChkSum((BYTE *) &SysInfo, EEP_SYS_LENTH);
+			SysInfo.CSUM = CalChkSum((BYTE *) &SysInfo, EEP_SYS_LENTH);
 		}
 		FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE *) &SysInfo,
 				EEP_SYS_LENTH);

@@ -22,7 +22,7 @@
 #ifndef	SECURE_SPI
 #define	NVRAM_USE_EEP24CXX		//适用外部存储
 #endif
-//#define	NVRAM_USE_EEP24CXX		//适用外部存储
+#define	NVRAM_USE_EEP24CXX		//适用外部存储
 
 
 #define	DISPLAY_SYSINFO	//允许显示系统信息

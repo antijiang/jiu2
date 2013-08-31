@@ -142,4 +142,5 @@ void 	Display_All();
 void Init_LCD(void);
 void Freq_2_Buffer(unsigned long Freq, unsigned char *disbuffer);
 void SetPWM(BYTE portn, BYTE pwm);
+void LCD_HWSend();
 #endif

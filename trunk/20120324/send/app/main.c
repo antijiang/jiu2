@@ -44,14 +44,15 @@ BYTE BZY_on;
 #if 1
 WORD CalChkSum(BYTE *p, BYTE len)
 {
-	BYTE i;
+	BYTE i,a;
 
 	WORD chksum = 0;
 	//	p=(BYTE*)&SysInfo;
 	p = p + 2; //跳过最开始的校验码数据
 	for (i = 2; i < len; i++)
 	{
-		chksum += *p;
+		a=*p;
+		chksum += a;
 		p++;
 	}
 	return chksum;
@@ -71,7 +72,7 @@ WORD CalChkSum(BYTE *p, BYTE len)
 void Init_EPROM()
 {
 	BYTE buf, retrycount = 3;
-	_SYSINFO tmpsysinfo; //={0,0};
+ _SYSINFO tmpsysinfo={0}; //={0,0};
 
 	WORD sum;
 	BOOL eepok;
@@ -88,7 +89,7 @@ void Init_EPROM()
 		FLASH_Read((BYTE *) &tmpsysinfo, (FLADDR) (EEP_SYS_TBLSTART),
 				EEP_SYS_LENTH);
 		sum = CalChkSum((BYTE *) &tmpsysinfo, EEP_SYS_LENTH);
-		if ((buf == BOARD_ID_VER) && (sum == tmpsysinfo.chksum))
+		if ((buf == BOARD_ID_VER) && (sum == tmpsysinfo.CSUM))
 		{
 			eepok = 1;
 			break;
@@ -112,6 +113,7 @@ void Init_EPROM()
 	{
 		DisplayCont = DISPLAY_ERR0;
 		Display_All(); //显示初始错误
+#if 1 //ifndef	NVRAM_USE_EEP24CXX
 		//初始数据
 		SysInfo.TRANCODE = 0x5555;
 		SysInfo.ADJUST = 0;
@@ -124,7 +126,7 @@ void Init_EPROM()
 		SysInfo.VC20 = (WORD) ((DWORD) DEFALT_52PPM_VC20 * 1024
 				/ STANDARD_REF_VOLT); //20mg
 
-		SysInfo.chksum = CalChkSum((BYTE *) &SysInfo, EEP_SYS_LENTH);
+		SysInfo.CSUM = CalChkSum((BYTE *) &SysInfo, EEP_SYS_LENTH);
 		FLASH_Update((FLADDR) EEP_SYS_TBLSTART, (BYTE *) &SysInfo,
 				EEP_SYS_LENTH);
 		DPRINTF(printf("-----InitEPROM-----...\r\n")) ;
@@ -132,7 +134,7 @@ void Init_EPROM()
 				EEP_JIULST_LENTH);
 		buf = BOARD_ID_VER;
 		FLASH_Update((FLADDR) EEPROM_ID, (BYTE *) &buf, 1);
-
+#endif
 	}
 
 	//初始化变量
@@ -234,6 +236,7 @@ void main(void)
 	P1 |= 0x46; //srb clk data
 	PO_LCD_POWER(P_LCD_ON);
 	Init_LCD();
+	
 	Init_EPROM();
 #ifdef	SECURE_SPI
 	{

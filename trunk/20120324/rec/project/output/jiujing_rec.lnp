@@ -9,5 +9,3 @@
 ".\output\spicom.obj" 
 TO ".\output\jiujing_rec" 
 PRINT(".\jiujing_rec.m51") RAMSIZE(256) 
-CODE( 0X0000-0X1FFF )
-XDATA( 0X0000-0X01FF )
