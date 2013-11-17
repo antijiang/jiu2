@@ -251,7 +251,7 @@ void TaskRelay()
 
 	 
 		
-//跳闸停车状态 
+//跳闸停车状态 ,ACCon15分钟后可以开
 //到acc on 15分钟
 		case	0:
 		if(	ACCstate==0) 
@@ -275,7 +275,7 @@ void TaskRelay()
 		}else 
 		{
 		
-			 RELAYTobeOFFTime=20*60;
+			 RELAYTobeOFFTime=20*60;//60
 			 Mstate=2;
 			
 		}
@@ -502,8 +502,8 @@ void main (void)
 
 			}
  
- //录制时间
-			if(ACCstate){TctoberecStop=360;}
+ //录制时间,熄火后T时间后停止录制
+			if(ACCstate){TctoberecStop=20*60;}
 			
 			if(TctoberecStop!=0)
 			{

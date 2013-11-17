@@ -382,7 +382,7 @@ WORD VA, VB, VC; //va :冷制最低电压 VB：吹气前电压  VC：出气后电压
 #define	BATV4	(BYTE)((WORD)BATVREF*37/10)
 #define	BATV5	(BYTE)((WORD)BATVREF*36/10)
 
-BYTE BatCnt = 0; //电量级数
+BYTE BatCnt = 4; //电量级数
 void BatteryEnegyDetect()
 {
 	WORD tempv;
@@ -624,6 +624,8 @@ BYTE CalALCLevel(WORD untmg)
 	return jiu_level;
 }
 
+#define	MAX_AL_NUM	200
+#define	MIN_AL_NUM	5
 /***********************************************************
  ^V
  |
@@ -653,10 +655,11 @@ WORD CalALOTwo(WORD vol)
 	else
 		pcal = 20 + (VC - SysInfo.VC20) * (20 - 50) / (SysInfo.VC20
 				- SysInfo.VC);
-	if (pcal < 0)
+	if ((pcal < 0)||(pcal < MIN_AL_NUM))
 		pcal = 0;
-	if (pcal > 150)
-		pcal = 150;
+	if (pcal > MAX_AL_NUM)
+		pcal = MAX_AL_NUM;
+	
 	return ((WORD) pcal);
 }
 
@@ -982,8 +985,10 @@ void TestACHOL()
 				Display_All();
 #endif
 			}
+#define	MIN_VOLTAGE_START	1.8  //无酒精测量时的最小电压
 			Dtempv = ((DWORD) (1024 * 1.8 * 1000) / (STANDARD_REF_VOLT));
-			//电压不到2.1
+#define	HEAT_COUNTS_ADJUST		3   //在校准时加热的次数，如果电压偏低
+			//电压不到2.1  测试电压过低，表明需要继续预热
 			if (VB < (WORD) Dtempv)
 			{
 				VB = 0;
@@ -1001,8 +1006,9 @@ void TestACHOL()
 				}
 				else
 				{
+#define	HEAT_COUNT_NOADJUST		1   //在不校准时加热的次数，只加热一次或n
 					CountHeat = 20;
-					if (HeatRetryTime >= 2)
+					if (HeatRetryTime >= HEAT_COUNT_NOADJUST)
 					{
 						StateSensor = TEST_100HZ_H3;
 						goto LABEL_TEST_READY;

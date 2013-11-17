@@ -143,7 +143,7 @@ void rmBurstWriteBytes(WORD wIndex, BYTE *pBuf, WORD ucBufLen)
         pBuf += ucWriteCount; // next buffer pointer
 
         // Delay1ms(1);
-        Delay1ms(12); //jxd
+        Delay1ms(15); //jxd
     } // while
 
 }

@@ -8,6 +8,7 @@ Project File Date:  08/31/2013
 
 <h2>Output:</h2>
 Build target 'rec'
+compiling main.c...
 linking...
 *** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
     SEGMENT: ?PR?DAPI_STOREFLASHCONFIG?MAIN

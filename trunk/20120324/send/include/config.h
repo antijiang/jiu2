@@ -38,8 +38,8 @@
 #else
 //#define		SensorPowerOn()  	TEST_SPI(CMD_SET_P00)
 //#define		SensorPowerOff()  TEST_SPI(CMD_CLR_P00)
-#define		SensorPowerOn()  	{SetPWM(02,0xff);TEST_SPI(CMD_SET_P00);}
-#define		SensorPowerOff()  {SetPWM(02,00);TEST_SPI(CMD_CLR_P00);}
+#define		SensorPowerOn()  	{SetPWM(02,0xff);TEST_SPI(CMD_CLR_P54);TEST_SPI(CMD_SET_P00);}
+#define		SensorPowerOff()  {SetPWM(02,00);TEST_SPI(CMD_SET_P54);TEST_SPI(CMD_CLR_P00);}
 
 #endif
 #ifndef	  SECURE_SPI
