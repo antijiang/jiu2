@@ -163,7 +163,7 @@ void yuyintixing()
 {
 WORD  tmp;
 BOOL chaoshi=0;
-	if(sys_time.Time_1_sec%20!=1)return; //每20秒提醒一次
+	if(sys_time.Time_1_sec%20!=1)return; //每20秒提醒一次,0,20,40,整秒提醒
 
 	//语音提醒
 	 {
@@ -175,8 +175,9 @@ BOOL chaoshi=0;
 		}
 		else if	(ACCOnTimeCnt> 3*60 )
 		{
-		   tmp= ACCOnTimeCnt-3*60;
-		   if(tmp%30==0)chaoshi=1; //每30分钟提醒
+		 //  tmp= ACCOnTimeCnt-3*60;
+		 //  if(tmp%30==0)chaoshi=1; //每30分钟提醒
+			if(ACCOnTimeCnt%30==0)chaoshi=1; //每30分钟提醒
 		}
 	 }
 	// else ACCOnTimeCnt=0;
@@ -188,6 +189,7 @@ void  chaoshijisuan()
 	 if(ACCstate)
 	 {
 		ACCOnTimeCnt++;
+		if(ACCOnTimeCnt==(4*60+1))ACCOnTimeCnt=3*60+1;  //计数范围180...241   30*60+1  +2 .+30=210.. +60=240
 	 }
 		else
 	{

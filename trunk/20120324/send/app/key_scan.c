@@ -798,7 +798,7 @@ void Qishu_EN()
 #ifdef  FANGBO_PWR
 #define		HEAT_TIME_MAX	10
 #else
-#define		HEAT_TIME_MAX	20
+#define		HEAT_TIME_MAX	25 //20
 #endif
 
 //测量电压 在VS VP中
@@ -859,6 +859,13 @@ void TestACHOL()
 		Display_All();
 		SendRF(FUN_DETECT_CAR);
 		CountHeat = HEAT_TIME_MAX; //加热10秒
+#ifdef SECURE_SPI
+		{
+			extern BYTE F_demo;
+			if (F_demo)
+				CountHeat = 5;
+		}
+#endif
 		//	Currrentjiu_level=0;	   2011.0711
 		StateSensor++;
 		qishu = 0;
@@ -1157,6 +1164,7 @@ void TestACHOL()
 			break;
 		case 2:
 			Dtempv = (DWORD) VC + ((0.2 * 1000) * 1024 / STANDARD_REF_VOLT);
+//Dtempv = (DWORD) VC + ((0.1 * 1000) * 1024 / STANDARD_REF_VOLT);//50%标不上，所以改小
 			goto LABEL_CMP;
 		case 1:
 			Dtempv = (DWORD) VC + ((0.4 * 1000) * 1024 / STANDARD_REF_VOLT);
